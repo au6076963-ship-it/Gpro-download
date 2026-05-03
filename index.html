@@ -1,256 +1,412 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Best Gym Management Software</title>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmacyERP Titanium | World-Class Software for Pakistan</title>
+    <meta name="description" content="The ultimate, 100% accurate Pharmacy ERP for Pakistan. High-speed POS, Split Khata, ZPL Barcodes, and tailored enterprise pricing.">
+    
+    <!-- Tailwind CSS for World-Class Responsive Styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons for Premium Iconography -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-        background-color: #f5f6fa;
-        color: #333;
-        line-height: 1.6;
-    }
-
-    /* Hero Section */
-    .hero {
-        background: linear-gradient(135deg, #1e3c72, #2a5298);
-        color: white;
-        padding: 100px 20px;
-        text-align: center;
-        animation: fadeIn 1.5s ease-in-out;
-    }
-
-    .hero h1 {
-        font-size: 3.2em;
-        font-weight: 700;
-        margin-bottom: 15px;
-    }
-
-    .hero p {
-        font-size: 1.2em;
-        margin: 0 auto 20px;
-        max-width: 700px;
-        opacity: 0.9;
-    }
-
-    .btn-download {
-        display: inline-block;
-        background: #ff4b2b;
-        color: white;
-        padding: 15px 40px;
-        font-size: 1.2em;
-        border-radius: 50px;
-        text-decoration: none;
-        box-shadow: 0 4px 15px rgba(255, 75, 43, 0.4);
-        transition: all 0.3s ease;
-    }
-
-    .btn-download:hover {
-        background: #ff3a1a;
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(255, 75, 43, 0.6);
-    }
-
-    /* Features Section */
-    .features {
-        padding: 70px 20px;
-        text-align: center;
-        background-color: white;
-    }
-
-    .features h2 {
-        font-size: 2.5em;
-        margin-bottom: 30px;
-        color: #1e3c72;
-    }
-
-    .feature-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 30px;
-        margin-top: 20px;
-    }
-
-    .feature-item {
-        background: #f1f2f6;
-        padding: 25px;
-        border-radius: 15px;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .feature-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    .feature-icon {
-        font-size: 45px;
-        margin-bottom: 15px;
-        color: #2a5298;
-    }
-
-    /* Requirements Section */
-    .requirements {
-        padding: 70px 20px;
-        background: white;
-        text-align: center;
-    }
-
-    .requirements h2 {
-        font-size: 2.5em;
-        color: #1e3c72;
-        margin-bottom: 20px;
-    }
-
-    .requirements p {
-        max-width: 700px;
-        margin: auto;
-        margin-bottom: 15px;
-        font-size: 1.1em;
-    }
-
-    .requirements a {
-        color: #ff4b2b;
-        font-weight: 600;
-        text-decoration: none;
-    }
-
-    .login-info {
-        margin-top: 20px;
-        background: #f1f2f6;
-        padding: 20px;
-        border-radius: 10px;
-        display: inline-block;
-        text-align: left;
-    }
-
-    .login-info p {
-        margin: 5px 0;
-    }
-
-    /* Screenshots */
-    .screenshots {
-        padding: 70px 20px;
-        text-align: center;
-        background-color: #eef1f6;
-    }
-
-    .screenshots h2 {
-        font-size: 2.5em;
-        margin-bottom: 30px;
-        color: #1e3c72;
-    }
-
-    .screenshot-gallery {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    .screenshot-gallery img {
-        width: 300px;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        transition: transform 0.3s ease;
-    }
-
-    .screenshot-gallery img:hover {
-        transform: scale(1.05);
-    }
-
-    /* Footer */
-    footer {
-        background: #1e3c72;
-        color: white;
-        text-align: center;
-        padding: 15px;
-        font-size: 0.9em;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-</style>
+    <!-- Configure Tailwind to match your Software's Titanium Palette -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        titanium: {
+                            900: '#0E1A2B', // TextDark
+                            800: '#0F3D91', // PrimaryAccent
+                            600: '#2E6BDE', // SecondaryAccent
+                            100: '#EEF2F7', // FormBackground
+                            50: '#F8FAFC'   // Pure Light
+                        },
+                        emerald: {
+                            600: '#0F9D75', // SuccessColor
+                            500: '#15B78A'
+                        },
+                        amber: {
+                            500: '#D89414'  // WarningColor
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Segoe UI', 'Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Animations */
+        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        
+        /* Modal Blur Effect */
+        .modal-backdrop { backdrop-filter: blur(5px); }
+    </style>
 </head>
-<body>
+<body class="bg-titanium-50 text-titanium-900 font-sans antialiased selection:bg-titanium-600 selection:text-white">
 
-<!-- Hero Section -->
-<section class="hero">
-    <h1>Best Gym Management Software</h1>
-    <p>Manage memberships, payments, attendance, and more — all in one powerful, user-friendly system designed for gyms of every size.</p>
-    <a href="="https://release-assets.githubusercontent.com/github-production-release-asset/1037759474/0aa5101a-9797-482d-a42c-5ace2d69b57f?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-08-22T10%3A06%3A14Z&rscd=attachment%3B+filename%3DGymPro_Setup_v1.2.exe&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-08-22T09%3A06%3A05Z&ske=2025-08-22T10%3A06%3A14Z&sks=b&skv=2018-11-09&sig=7T4fyJauIZsoCWKiOD4dj3eYZ9jse7dHAiuapHMFPCw%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc1NTg1NDg3NywibmJmIjoxNzU1ODU0NTc3LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.Fhe4rir_QxRGBiLEywvKpESQxtQL9sM7R57lKVJfqig&response-content-disposition=attachment%3B%20filename%3DGymPro_Setup_v1.2.exe&response-content-type=application%2Foctet-stream" class="btn-download">⬇ Download Software</a>
-</section>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <i class="ph-fill ph-first-aid text-3xl text-emerald-600"></i>
+                    <span class="font-black text-2xl tracking-tight text-titanium-800">Pharmacy<span class="text-titanium-600">ERP</span></span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="font-semibold text-gray-600 hover:text-titanium-800 transition">Features</a>
+                    <a href="#compliance" class="font-semibold text-gray-600 hover:text-titanium-800 transition">Pakistan Ready</a>
+                    <a href="#pricing" class="font-semibold text-gray-600 hover:text-titanium-800 transition">Pricing</a>
+                    <button onclick="openLicenseModal('quote')" class="font-bold text-titanium-800 hover:text-titanium-600 transition">Contact Sales</button>
+                    <button onclick="openLicenseModal('trial')" class="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2.5 rounded-full font-bold shadow-lg shadow-emerald-600/30 transition transform hover:-translate-y-0.5">
+                        Free Trial
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-<!-- Features Section -->
-<section class="features">
-    <h2>Why Choose This Software?</h2>
-    <div class="feature-grid">
-        <div class="feature-item">
-            <div class="feature-icon">💳</div>
-            <h3>Membership Management</h3>
-            <p>Track members, renewals, and subscriptions with ease.</p>
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center max-w-4xl mx-auto fade-in-up">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-titanium-100 text-titanium-800 font-bold text-sm mb-6 border border-titanium-600/20">
+                    <span class="relative flex h-3 w-3">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-600"></span>
+                    </span>
+                    Pharm Now Available for Pakistani Pharmacies
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-8 leading-tight">
+                    The Ultimate <span class="text-transparent bg-clip-text bg-gradient-to-r from-titanium-800 to-titanium-600">Softwere</span><br>Pharmacy ERP.
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-10 leading-relaxed max-w-3xl mx-auto">
+                    Built with zero compromises. High-speed keyboard POS, seamless Udhaar Khata management, multi-tier UOM math, and offline-first reliability. 
+                </p>
+                <p class="text-xl md:text-2xl text-gray-600 mb-10 leading-relaxed max-w-3xl mx-auto">
+                    DEFAULT Username: admin
+                    DEFAULT Password: admin 
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button onclick="openLicenseModal('quote')" class="w-full sm:w-auto bg-titanium-800 hover:bg-titanium-600 text-white px-8 py-4 rounded-xl font-black text-lg shadow-2xl shadow-titanium-800/40 transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <i class="ph-bold ph-whatsapp-logo"></i> Talk to Sales
+                    </button>
+                    <button onclick="openLicenseModal('trial')" class="w-full sm:w-auto bg-white border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-4 rounded-xl font-black text-lg transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <i class="ph-bold ph-download-simple"></i> Download 1-Month Trial
+                    </button>
+                </div>
+                <p class="mt-6 text-sm text-gray-500 font-medium flex items-center justify-center gap-4 flex-wrap">
+                    <span class="flex items-center gap-1"><i class="ph-fill ph-wifi-slash text-titanium-600"></i> Offline Capable</span>
+                    <span class="flex items-center gap-1"><i class="ph-fill ph-lock-key text-titanium-600"></i> Hardware Locked</span>
+                    <span class="flex items-center gap-1"><i class="ph-fill ph-rocket-launch text-titanium-600"></i> No Monthly Fees</span>
+                </p>
+            </div>
         </div>
-        <div class="feature-item">
-            <div class="feature-icon">📅</div>
-            <h3>Attendance Tracking</h3>
-            <p>Monitor check-ins, classes, and personal training sessions.</p>
+    </section>
+
+    <!-- Core Features Grid -->
+    <section id="features" class="py-20 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up delay-100">
+                <h2 class="text-4xl font-black text-titanium-900">Engineered for Flawless Operations</h2>
+                <p class="mt-4 text-lg text-gray-600">We removed the bugs, stopped the crashes, and perfected the math.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-titanium-50 rounded-3xl p-8 border border-gray-200 hover:shadow-xl transition fade-in-up delay-100">
+                    <div class="w-14 h-14 bg-titanium-800 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-titanium-800/30">
+                        <i class="ph-fill ph-keyboard text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Lightning Fast POS</h3>
+                    <p class="text-gray-600 font-medium">100% keyboard-navigable. Cashiers can scan, type quantities, and checkout via F12 without ever touching a mouse.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-titanium-50 rounded-3xl p-8 border border-gray-200 hover:shadow-xl transition fade-in-up delay-200">
+                    <div class="w-14 h-14 bg-emerald-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-emerald-600/30">
+                        <i class="ph-fill ph-math-operations text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Multi-Tier UOM Math</h3>
+                    <p class="text-gray-600 font-medium">Flawlessly convert Box → Strip → Tablet. The penny-perfect math engine stops stock discrepancies instantly.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-titanium-50 rounded-3xl p-8 border border-gray-200 hover:shadow-xl transition fade-in-up delay-300">
+                    <div class="w-14 h-14 bg-amber-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-amber-500/30">
+                        <i class="ph-fill ph-barcode text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Commercial ZPL Barcoding</h3>
+                    <p class="text-gray-600 font-medium">Generate professional retail stickers with Medicine Name, Price, and Expiry directly to Zebra/TVS thermal printers.</p>
+                </div>
+            </div>
         </div>
-        <div class="feature-item">
-            <div class="feature-icon">💰</div>
-            <h3>Payment Records</h3>
-            <p>Manage fees, invoices, and outstanding balances efficiently.</p>
+    </section>
+
+    <!-- Flexible Pricing Section (Lead Generation) -->
+    <section id="pricing" class="py-20 bg-titanium-50 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden fade-in-up delay-100">
+                <div class="grid lg:grid-cols-2">
+                    <div class="p-10 lg:p-16">
+                        <h2 class="text-3xl lg:text-4xl font-black text-titanium-900 mb-4">Tailored Pricing for Your Business.</h2>
+                        <p class="text-lg text-gray-600 mb-8 font-medium">
+                            We don't believe in forcing a one-size-fits-all price. Whether you run a single neighborhood medical store or a multi-branch enterprise network, we customize the software license to fit your exact operational scale and budget.
+                        </p>
+                        <ul class="space-y-4 mb-10">
+                            <li class="flex items-center gap-3 text-titanium-900 font-bold">
+                                <i class="ph-bold ph-check text-emerald-600 text-xl"></i> Perpetual Offline License (No Monthly Fees)
+                            </li>
+                            <li class="flex items-center gap-3 text-titanium-900 font-bold">
+                                <i class="ph-bold ph-check text-emerald-600 text-xl"></i> Free Initial Training & Data Migration
+                            </li>
+                            <li class="flex items-center gap-3 text-titanium-900 font-bold">
+                                <i class="ph-bold ph-check text-emerald-600 text-xl"></i> Priority WhatsApp Support
+                            </li>
+                        </ul>
+                        <button onclick="openLicenseModal('quote')" class="bg-titanium-800 hover:bg-titanium-600 text-white px-8 py-4 rounded-xl font-black text-lg transition shadow-lg flex items-center gap-2">
+                            <i class="ph-bold ph-chat-circle-text"></i> Request a Custom Quote
+                        </button>
+                    </div>
+                    <div class="bg-titanium-900 p-10 lg:p-16 flex flex-col justify-center relative overflow-hidden">
+                        <div class="absolute top-0 right-0 -mr-10 -mt-10 opacity-10">
+                            <i class="ph-fill ph-currency-circle-dollar text-[250px] text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-6 relative z-10">Ready to negotiate? Tell us:</h3>
+                        <div class="space-y-4 relative z-10">
+                            <div class="bg-titanium-800/50 border border-titanium-700 p-4 rounded-xl text-titanium-100 flex items-center gap-4">
+                                <div class="w-10 h-10 bg-titanium-700 rounded-full flex items-center justify-center flex-shrink-0"><i class="ph-fill ph-desktop text-xl"></i></div>
+                                <div class="font-medium">How many computer terminals?</div>
+                            </div>
+                            <div class="bg-titanium-800/50 border border-titanium-700 p-4 rounded-xl text-titanium-100 flex items-center gap-4">
+                                <div class="w-10 h-10 bg-titanium-700 rounded-full flex items-center justify-center flex-shrink-0"><i class="ph-fill ph-storefront text-xl"></i></div>
+                                <div class="font-medium">How many physical branches?</div>
+                            </div>
+                            <div class="bg-titanium-800/50 border border-titanium-700 p-4 rounded-xl text-titanium-100 flex items-center gap-4">
+                                <div class="w-10 h-10 bg-titanium-700 rounded-full flex items-center justify-center flex-shrink-0"><i class="ph-fill ph-database text-xl"></i></div>
+                                <div class="font-medium">Do you need existing data imported?</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="feature-item">
-            <div class="feature-icon">📊</div>
-            <h3>Reports & Analytics</h3>
-            <p>Generate detailed insights to grow your fitness business.</p>
+    </section>
+
+    <!-- Pakistan Localization -->
+    <section id="compliance" class="py-20 bg-titanium-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-up delay-200">
+                    <span class="text-emerald-500 font-black tracking-wider uppercase text-sm mb-2 block">Built for Pakistan</span>
+                    <h2 class="text-4xl lg:text-5xl font-black mb-6">Complete Local Compliance.</h2>
+                    <ul class="space-y-6 text-lg text-gray-300 font-medium">
+                        <li class="flex items-start gap-4">
+                            <i class="ph-fill ph-check-circle text-emerald-500 text-2xl mt-1"></i>
+                            <div><strong class="text-white">Split Khata System:</strong> Full ledger integration for walk-in cash and Udhaar (credit) customers.</div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i class="ph-fill ph-check-circle text-emerald-500 text-2xl mt-1"></i>
+                            <div><strong class="text-white">CNIC & NTN Validation:</strong> Real-time keystroke formatters for customer and supplier tax identities.</div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i class="ph-fill ph-check-circle text-emerald-500 text-2xl mt-1"></i>
+                            <div><strong class="text-white">Wapsi & Damage Auditing:</strong> Manager-PIN protected flows for Blind Returns and Expiry write-offs.</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-titanium-800 p-8 rounded-3xl border border-titanium-600 shadow-2xl relative overflow-hidden fade-in-up delay-200">
+                    <!-- Abstract Dashboard Mockup -->
+                    <div class="flex items-center gap-2 mb-4 border-b border-titanium-600 pb-4">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="text-titanium-100 font-bold ml-2 text-sm">Enterprise POS Terminal</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="h-10 bg-titanium-900 rounded-lg border border-titanium-600 flex items-center px-4"><span class="text-gray-400 font-mono text-sm">Search Medicine (F3)...</span></div>
+                        <div class="grid grid-cols-4 gap-2">
+                            <div class="col-span-3 h-32 bg-titanium-900 rounded-lg border border-titanium-600 p-3">
+                                <div class="h-4 bg-titanium-700 rounded w-1/3 mb-2"></div>
+                                <div class="h-4 bg-titanium-700 rounded w-full mb-2"></div>
+                                <div class="h-4 bg-titanium-700 rounded w-2/3"></div>
+                            </div>
+                            <div class="col-span-1 bg-titanium-900 rounded-lg border border-emerald-600/50 p-3 flex flex-col justify-end">
+                                <span class="text-emerald-500 font-black text-xl">Rs. 10,500</span>
+                                <div class="h-8 bg-emerald-600 rounded mt-2 w-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex justify-center items-center gap-2 mb-4">
+                <i class="ph-fill ph-first-aid text-2xl text-emerald-600"></i>
+                <span class="font-black text-xl text-titanium-800">Pharmacy<span class="text-titanium-600">ERP</span></span>
+            </div>
+            <p class="text-gray-500 font-semibold mb-6">Designed and Engineered for Pakistani Pharmacies.</p>
+            <div class="flex justify-center gap-4">
+                <a href="https://wa.me/923235707591" target="_blank" class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center hover:bg-green-200 transition shadow-sm">
+                    <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
+                </a>
+                <a href="mailto:ahmedusmankhan@gmail.com" class="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center hover:bg-red-200 transition shadow-sm">
+                    <i class="ph-fill ph-envelope-simple text-2xl"></i>
+                </a>
+            </div>
+            <p class="text-gray-400 text-sm mt-8">&copy; 2026 PharmacyERP Titanium. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- TITANIUM LICENSE / DOWNLOAD MODAL          -->
+    <!-- ========================================== -->
+    <div id="licenseModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-titanium-900/60 modal-backdrop transition-opacity" onclick="closeLicenseModal()"></div>
+        
+        <!-- Modal Content -->
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl relative z-10 overflow-hidden transform transition-all">
+            <!-- Header -->
+            <div class="bg-titanium-800 p-6 text-center border-b-4 border-emerald-600 relative">
+                <button onclick="closeLicenseModal()" class="absolute top-4 right-4 text-white hover:text-gray-300">
+                    <i class="ph-bold ph-x text-2xl"></i>
+                </button>
+                <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i id="modalIcon" class="ph-fill ph-download-simple text-3xl text-white"></i>
+                </div>
+                <h3 id="modalTitle" class="text-2xl font-black text-white">Get Your Software</h3>
+                <p id="modalSub" class="text-titanium-100 font-medium mt-1">Follow these steps to activate your system.</p>
+            </div>
+
+            <!-- Body Steps -->
+            <div class="p-6 sm:p-8">
+                <div class="space-y-6">
+                    <!-- Step 1 -->
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center font-black text-lg border-2 border-emerald-200">1</div>
+                        <div>
+                            <h4 class="font-bold text-lg text-titanium-900">Download the Installer</h4>
+                            <p class="text-gray-600 mb-2 font-medium text-sm sm:text-base">Click below to securely download the software via F2H.io.</p>
+                            <!-- Replace '#' with your actual F2H link -->
+                            <a href="https://f2h.io" target="_blank" onclick="markDownloaded()" class="inline-flex items-center gap-2 bg-titanium-100 hover:bg-titanium-200 text-titanium-800 px-5 py-2.5 rounded-xl font-bold transition border border-gray-200 text-sm sm:text-base">
+                                <i class="ph-bold ph-cloud-arrow-down"></i> Start Download
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 bg-titanium-100 text-titanium-600 rounded-full flex items-center justify-center font-black text-lg border-2 border-titanium-200">2</div>
+                        <div>
+                            <h4 class="font-bold text-lg text-titanium-900">Copy Machine ID</h4>
+                            <p class="text-gray-600 font-medium text-sm sm:text-base">Install the software. On the login screen, copy your unique Hardware Machine ID.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 bg-titanium-100 text-titanium-600 rounded-full flex items-center justify-center font-black text-lg border-2 border-titanium-200">3</div>
+                        <div class="w-full">
+                            <h4 id="step3Title" class="font-bold text-lg text-titanium-900">Contact Usman for Key</h4>
+                            <p class="text-gray-600 font-medium mb-3 text-sm sm:text-base">Send your Machine ID to discuss pricing and receive your activation key.</p>
+                            
+                            <div class="grid grid-cols-2 gap-3">
+                                <!-- Pre-filled WhatsApp Link -->
+                                <a id="btnWa" href="#" target="_blank" class="flex flex-col items-center justify-center gap-2 bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#128C7E] p-3 rounded-xl font-bold transition border border-[#25D366]/30 text-sm sm:text-base">
+                                    <i class="ph-fill ph-whatsapp-logo text-3xl"></i>
+                                    WhatsApp
+                                </a>
+                                <!-- Pre-filled Email Link -->
+                                <a id="btnMail" href="#" class="flex flex-col items-center justify-center gap-2 bg-red-50 hover:bg-red-100 text-red-600 p-3 rounded-xl font-bold transition border border-red-200 text-sm sm:text-base">
+                                    <i class="ph-fill ph-envelope text-3xl"></i>
+                                    Gmail
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</section>
 
-<!-- Requirements Section -->
-<section class="requirements">
-    <h2>Before You Start</h2>
-    <p>To run this application, you must install the latest <strong>.NET Desktop Runtime</strong> from Microsoft:</p>
-    <p>
-        🔗 <a href="https://dotnet.microsoft.com/en-us/download/dotnet/8.0/runtime" target="_blank">
-            Download .NET Desktop Runtime (Latest Version)
-        </a>
-    </p>
-    <div class="login-info">
-        <h3>Default Login Details</h3>
-        <p><strong>Username:</strong> admin</p>
-        <p><strong>Password:</strong> admin@123</p>
-    </div>
-    <br>
-    <a href="https://release-assets.githubusercontent.com/github-production-release-asset/1037759474/0aa5101a-9797-482d-a42c-5ace2d69b57f?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-08-22T10%3A06%3A14Z&rscd=attachment%3B+filename%3DGymPro_Setup_v1.2.exe&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-08-22T09%3A06%3A05Z&ske=2025-08-22T10%3A06%3A14Z&sks=b&skv=2018-11-09&sig=7T4fyJauIZsoCWKiOD4dj3eYZ9jse7dHAiuapHMFPCw%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc1NTg1NDg3NywibmJmIjoxNzU1ODU0NTc3LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.Fhe4rir_QxRGBiLEywvKpESQxtQL9sM7R57lKVJfqig&response-content-disposition=attachment%3B%20filename%3DGymPro_Setup_v1.2.exe&response-content-type=application%2Foctet-stream" class="btn-download">⬇ Download Software</a>
-</section>
+    <!-- Logic -->
+    <script>
+        const phone = "923235707591";
+        const email = "ahmedusmankhan@gmail.com";
 
-<!-- Screenshots Section -->
-<section class="screenshots">
-    <h2>See It in Action</h2>
-    <div class="screenshot-gallery">
-        <img src="YOUR_SCREENSHOT1_URL" alt="Screenshot 1">
-        <img src="YOUR_SCREENSHOT2_URL" alt="Screenshot 2">
-        <img src="YOUR_SCREENSHOT3_URL" alt="Screenshot 3">
-    </div>
-</section>
+        function openLicenseModal(type) {
+            const modal = document.getElementById('licenseModal');
+            const title = document.getElementById('modalTitle');
+            const sub = document.getElementById('modalSub');
+            const icon = document.getElementById('modalIcon');
+            const btnWa = document.getElementById('btnWa');
+            const btnMail = document.getElementById('btnMail');
+            const step3Title = document.getElementById('step3Title');
 
-<!-- Footer -->
-<footer>
-    © 2025 Ahmed Usman | All Rights Reserved
-</footer>
+            let subject = "";
+            let bodyText = "";
 
+            if (type === 'trial') {
+                title.innerText = "Start 1-Month Free Trial";
+                sub.innerText = "Download, install, and request your trial key.";
+                icon.className = "ph-fill ph-gift text-3xl text-white";
+                step3Title.innerText = "Request Trial Key via WhatsApp";
+                
+                subject = "Request: 1-Month Free Trial Key";
+                bodyText = "Hello Usman,\n\nI have downloaded the Pharmacy ERP. I would like to activate my 1-Month Free Trial.\n\nMy Machine ID is: [PASTE YOUR ID HERE]";
+            } else {
+                title.innerText = "Request Custom Quote";
+                sub.innerText = "Download the software and get a tailored price.";
+                icon.className = "ph-fill ph-handshake text-3xl text-white";
+                step3Title.innerText = "Discuss Pricing & Get Key";
+
+                subject = "Inquiry: Custom Quote for Pharmacy ERP";
+                bodyText = "Hello Usman,\n\nI am interested in a custom quote for the Pharmacy ERP for my business.\n\nMy Machine ID is: [PASTE YOUR ID HERE]\n\nI have [NUMBER] computers and [NUMBER] branches. Let's discuss the pricing.";
+            }
+
+            // Encode for URLs
+            const waText = encodeURIComponent(bodyText);
+            const mailSubject = encodeURIComponent(subject);
+            const mailBody = encodeURIComponent(bodyText);
+
+            btnWa.href = `https://wa.me/${phone}?text=${waText}`;
+            btnMail.href = `mailto:${email}?subject=${mailSubject}&body=${mailBody}`;
+
+            // Show Modal
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Small animation trigger
+            setTimeout(() => {
+                modal.querySelector('div.bg-white').classList.add('scale-100', 'opacity-100');
+                modal.querySelector('div.bg-white').classList.remove('scale-95', 'opacity-0');
+            }, 10);
+        }
+
+        function closeLicenseModal() {
+            const modal = document.getElementById('licenseModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function markDownloaded() {
+            // Visual feedback that step 1 is done
+            const step1btn = document.querySelector('a[href^="https://f2h.io"]');
+            step1btn.innerHTML = '<i class="ph-bold ph-check text-emerald-600"></i> Download Started';
+            step1btn.classList.add('border-emerald-500', 'bg-emerald-50');
+        }
+    </script>
 </body>
 </html>
