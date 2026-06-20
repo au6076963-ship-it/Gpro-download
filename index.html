@@ -1,426 +1,1998 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PharmacyERP Titanium | World-Class Software for Pakistan</title>
-    <meta name="description" content="The ultimate, 100% accurate Pharmacy ERP for Pakistan. High-speed POS, Split Khata, ZPL Barcodes, and tailored enterprise pricing.">
-    
-    <!-- Tailwind CSS for World-Class Responsive Styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Phosphor Icons for Premium Iconography -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PharmacyERP — Pakistan's most powerful pharmacy management software. POS, inventory, accounting, khata, receipts. Free download for Windows.">
+<meta property="og:title" content="PharmacyERP — Smart Pharmacy Software for Pakistan">
+<meta property="og:description" content="Complete pharmacy management: POS Terminal, Inventory, Accounting, Khata, Receipts. Made for Pakistani pharmacies.">
+<meta property="og:type" content="website">
+<title>PharmacyERP — Pakistan ka Behtareen Pharmacy Software</title>
 
-    <!-- Configure Tailwind to match your Software's Titanium Palette -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        titanium: {
-                            900: '#0E1A2B', // TextDark
-                            800: '#0F3D91', // PrimaryAccent
-                            600: '#2E6BDE', // SecondaryAccent
-                            100: '#EEF2F7', // FormBackground
-                            50: '#F8FAFC'   // Pure Light
-                        },
-                        emerald: {
-                            600: '#0F9D75', // SuccessColor
-                            500: '#15B78A'
-                        },
-                        amber: {
-                            500: '#D89414'  // WarningColor
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Segoe UI', 'Inter', 'system-ui', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Custom Animations */
-        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
-        .delay-100 { animation-delay: 100ms; }
-        .delay-200 { animation-delay: 200ms; }
-        .delay-300 { animation-delay: 300ms; }
-        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-        
-        /* Modal Blur Effect */
-        .modal-backdrop { backdrop-filter: blur(8px); }
-    </style>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════════════ */
+:root {
+  --bg:          #06090F;
+  --bg2:         #0B1018;
+  --surface:     #0F1923;
+  --surface2:    #141F2E;
+  --border:      #1A2840;
+  --border2:     #243550;
+  --green:       #00C851;
+  --green2:      #00A840;
+  --green-dim:   rgba(0,200,81,0.12);
+  --green-glow:  0 0 40px rgba(0,200,81,0.25), 0 0 80px rgba(0,200,81,0.10);
+  --blue:        #1A8FFF;
+  --blue-dim:    rgba(26,143,255,0.12);
+  --gold:        #F5A623;
+  --red:         #FF4757;
+  --text:        #E2EDFF;
+  --text2:       #7A96B8;
+  --text3:       #3A5070;
+  --radius:      16px;
+  --radius-sm:   10px;
+  --font-display:'Plus Jakarta Sans', sans-serif;
+  --font-body:   'Inter', sans-serif;
+  --font-mono:   'JetBrains Mono', monospace;
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* ═══════════════════════════════════════════════════════
+   SCROLL REVEAL SYSTEM
+═══════════════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-left  { opacity: 0; transform: translateX(-32px); transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1); }
+.reveal-right { opacity: 0; transform: translateX(32px);  transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1); }
+.reveal-left.visible, .reveal-right.visible { opacity: 1; transform: none; }
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+/* ═══════════════════════════════════════════════════════
+   BACKGROUND GRID
+═══════════════════════════════════════════════════════ */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(26,143,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,143,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.grid-bg::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,200,81,0.06) 0%, transparent 70%);
+}
+
+/* ═══════════════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 2rem;
+  transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
+}
+nav.scrolled {
+  background: rgba(6,9,15,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 var(--border);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+.logo-cross {
+  width: 34px;
+  height: 34px;
+  background: var(--green);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  box-shadow: 0 0 16px rgba(0,200,81,0.4);
+  animation: pulse-logo 3s ease-in-out infinite;
+}
+@keyframes pulse-logo {
+  0%,100% { box-shadow: 0 0 16px rgba(0,200,81,0.4); }
+  50%      { box-shadow: 0 0 28px rgba(0,200,81,0.7); }
+}
+.logo-cross::before,
+.logo-cross::after {
+  content:'';
+  position:absolute;
+  background:#fff;
+  border-radius:2px;
+}
+.logo-cross::before { width:16px; height:5px; }
+.logo-cross::after  { width:5px;  height:16px; }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text2);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.btn-nav {
+  padding: 0.5rem 1.25rem;
+  background: var(--green);
+  color: #000;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.875rem;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-nav:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(0,200,81,0.4);
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ═══════════════════════════════════════════════════════
+   MOBILE NAV
+═══════════════════════════════════════════════════════ */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 70px; left: 0; right: 0;
+  background: rgba(6,9,15,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  z-index: 99;
+  flex-direction: column;
+  gap: 1rem;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text2);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
+}
+.mobile-nav a:last-child { border: none; }
+.mobile-nav a:hover { color: var(--green); }
+
+/* ═══════════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 2rem 80px;
+  overflow: hidden;
+}
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+.hero-orb-1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,200,81,0.14) 0%, transparent 70%);
+  top: -100px; left: 50%;
+  transform: translateX(-50%);
+  animation: orb-float 8s ease-in-out infinite;
+}
+.hero-orb-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(26,143,255,0.10) 0%, transparent 70%);
+  bottom: 0; right: -100px;
+  animation: orb-float 10s ease-in-out infinite reverse;
+}
+.hero-orb-3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(0,200,81,0.08) 0%, transparent 70%);
+  bottom: 100px; left: -80px;
+  animation: orb-float 12s ease-in-out infinite;
+}
+@keyframes orb-float {
+  0%,100% { transform: translateY(0) translateX(-50%); }
+  50%      { transform: translateY(-30px) translateX(-50%); }
+}
+.hero-orb-2, .hero-orb-3 { animation-name: orb-float2; }
+@keyframes orb-float2 {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-20px); }
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.35rem 1rem;
+  background: var(--green-dim);
+  border: 1px solid rgba(0,200,81,0.3);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--green);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.03em;
+  animation: badge-in 0.8s cubic-bezier(.22,1,.36,1) both;
+}
+.badge-dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: blink 1.5s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+@keyframes badge-in { from{opacity:0;transform:translateY(-12px)} }
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+  animation: hero-title-in 1s cubic-bezier(.22,1,.36,1) 0.2s both;
+}
+@keyframes hero-title-in { from{opacity:0;transform:translateY(24px)} }
+
+.hero-headline .accent-green { color: var(--green); }
+.hero-headline .accent-line {
+  position: relative;
+  display: inline-block;
+}
+.hero-headline .accent-line::after {
+  content:'';
+  position:absolute;
+  bottom: 4px; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--green), var(--blue));
+  border-radius: 2px;
+  animation: underline-in 0.8s cubic-bezier(.22,1,.36,1) 0.9s both;
+}
+@keyframes underline-in { from{scaleX(0);transform-origin:left} to{transform:scaleX(1)} }
+
+.hero-urdu {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: var(--text2);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  animation: hero-title-in 1s cubic-bezier(.22,1,.36,1) 0.35s both;
+}
+.hero-urdu .urdu-word { color: var(--green); font-weight: 600; }
+
+.hero-sub {
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--text2);
+  line-height: 1.7;
+  animation: hero-title-in 1s cubic-bezier(.22,1,.36,1) 0.45s both;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3.5rem;
+  animation: hero-title-in 1s cubic-bezier(.22,1,.36,1) 0.55s both;
+}
+
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.9rem 2rem;
+  background: var(--green);
+  color: #000;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 24px rgba(0,200,81,0.35);
+  position: relative;
+  overflow: hidden;
+}
+.btn-download::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+  opacity:0;
+  transition: opacity 0.2s;
+}
+.btn-download:hover { transform:translateY(-2px); box-shadow: 0 8px 32px rgba(0,200,81,0.5); }
+.btn-download:hover::before { opacity:1; }
+.btn-download:active { transform:translateY(0); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.9rem 1.75rem;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border2);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-ghost:hover { border-color: var(--text2); background: var(--surface); }
+
+/* Download icon pulse */
+.dl-icon {
+  width: 20px; height: 20px;
+  display: flex; align-items: center; justify-content: center;
+  animation: dl-bounce 1.5s ease-in-out infinite;
+}
+@keyframes dl-bounce {
+  0%,100%{transform:translateY(0)} 50%{transform:translateY(3px)}
+}
+
+/* Hero stats */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  animation: hero-title-in 1s cubic-bezier(.22,1,.36,1) 0.65s both;
+}
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero-stat-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1;
+}
+.hero-stat-num .counter-unit { color: var(--green); }
+.hero-stat-label {
+  font-size: 0.78rem;
+  color: var(--text2);
+  font-weight: 500;
+  margin-top: 2px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+}
+
+/* ═══════════════════════════════════════════════════════
+   SECTION CHROME
+═══════════════════════════════════════════════════════ */
+section { position: relative; z-index: 1; }
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 2rem;
+}
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+.eyebrow-line {
+  width: 24px;
+  height: 2px;
+  background: var(--green);
+  border-radius: 2px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.section-sub {
+  font-size: 1.05rem;
+  color: var(--text2);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════════════════
+   FEATURES BENTO GRID
+═══════════════════════════════════════════════════════ */
+.features-section { background: var(--bg2); }
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 3.5rem;
+}
+.bento-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  cursor: default;
+}
+.bento-card::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(0,200,81,0.06) 0%, transparent 60%);
+  opacity:0;
+  transition: opacity 0.3s;
+}
+.bento-card:hover { border-color: var(--border2); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+.bento-card:hover::before { opacity:1; }
+
+.bento-card.span-2 { grid-column: span 2; }
+.bento-card.feature-pos { background: linear-gradient(135deg, var(--surface) 0%, #0A1A10 100%); }
+.bento-card.feature-pos::after {
+  content:'';
+  position:absolute;
+  top:-40px; right:-40px;
+  width:150px; height:150px;
+  background: radial-gradient(circle, rgba(0,200,81,0.15), transparent 70%);
+}
+
+.feature-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+.icon-green  { background: var(--green-dim);  color: var(--green); }
+.icon-blue   { background: var(--blue-dim);   color: var(--blue);  }
+.icon-gold   { background: rgba(245,166,35,.12); color: var(--gold); }
+.icon-red    { background: rgba(255,71,87,.10);  color: var(--red);  }
+.icon-purple { background: rgba(138,43,226,.12); color: #A855F7;     }
+.icon-teal   { background: rgba(0,200,180,.10);  color: #00C8B4;     }
+
+.feature-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+.feature-desc {
+  font-size: 0.875rem;
+  color: var(--text2);
+  line-height: 1.65;
+}
+.feature-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+.feature-tag {
+  padding: 0.2rem 0.6rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text2);
+  font-family: var(--font-mono);
+}
+
+/* ═══════════════════════════════════════════════════════
+   SETUP GUIDE TIMELINE
+═══════════════════════════════════════════════════════ */
+.setup-section { background: var(--bg); }
+
+.timeline {
+  margin-top: 4rem;
+  position: relative;
+}
+.timeline::before {
+  content:'';
+  position:absolute;
+  top:28px;
+  left:28px;
+  width:2px;
+  bottom:28px;
+  background: linear-gradient(to bottom, var(--green), var(--blue), transparent);
+  border-radius: 2px;
+}
+.timeline-item {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+.timeline-marker {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--green);
+  position: relative;
+  z-index: 1;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.timeline-item:hover .timeline-marker {
+  border-color: var(--green);
+  box-shadow: 0 0 20px rgba(0,200,81,0.25);
+}
+.timeline-content {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.75rem;
+  flex: 1;
+  transition: border-color 0.3s;
+}
+.timeline-item:hover .timeline-content { border-color: var(--border2); }
+.timeline-step-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.3rem;
+}
+.timeline-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+.timeline-desc {
+  font-size: 0.9rem;
+  color: var(--text2);
+  line-height: 1.65;
+}
+.timeline-code {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.35rem 0.85rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--green);
+}
+.timeline-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.85rem;
+  background: rgba(26,143,255,0.08);
+  border: 1px solid rgba(26,143,255,0.2);
+  border-radius: 8px;
+  font-size: 0.82rem;
+  color: var(--blue);
+}
+
+/* ═══════════════════════════════════════════════════════
+   SCREENSHOTS / PREVIEW
+═══════════════════════════════════════════════════════ */
+.preview-section { background: var(--bg2); }
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 3.5rem;
+}
+.preview-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.preview-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.4); }
+.preview-screen {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.preview-screen-inner {
+  width: 85%;
+  height: 75%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated POS screen */
+.sim-pos-bar {
+  height: 32px;
+  background: linear-gradient(90deg, #00C851, #009940);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 6px;
+}
+.sim-bar-dot { width:8px;height:8px;border-radius:50%; }
+.sim-pos-body { padding: 8px 12px; }
+.sim-row {
+  height: 14px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  animation: shimmer 2s ease-in-out infinite;
+}
+.sim-row-1 { background: rgba(255,255,255,0.07); width: 80%; }
+.sim-row-2 { background: rgba(255,255,255,0.05); width: 60%; animation-delay: 0.3s; }
+.sim-row-3 { background: rgba(0,200,81,0.15);    width: 45%; animation-delay: 0.6s; }
+.sim-row-4 { background: rgba(255,255,255,0.04); width: 70%; animation-delay: 0.9s; }
+.sim-total { margin-top:8px; height:22px; border-radius:4px; background: rgba(0,200,81,0.2); width:90%; }
+@keyframes shimmer { 0%,100%{opacity:.7} 50%{opacity:1} }
+
+/* Animated ledger screen */
+.sim-ledger-header { height:28px; background:rgba(26,143,255,0.15); display:flex; align-items:center; padding:0 10px; gap:4px; }
+.sim-ledger-body { padding:6px 10px; }
+.sim-lrow { display:flex; justify-content:space-between; align-items:center; margin-bottom:5px; }
+.sim-lrow-label { height:10px; border-radius:3px; background:rgba(255,255,255,0.06); }
+.sim-lrow-val { height:10px; border-radius:3px; background:rgba(0,200,81,0.15); }
+.sim-lrow-neg { height:10px; border-radius:3px; background:rgba(255,71,87,0.15); }
+
+.preview-info {
+  padding: 1.25rem 1.5rem;
+}
+.preview-info-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+.preview-info-desc {
+  font-size: 0.83rem;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════
+   REQUIREMENTS
+═══════════════════════════════════════════════════════ */
+.req-section { background: var(--bg); }
+
+.req-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 3rem;
+}
+.req-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.req-icon { font-size: 1.75rem; }
+.req-label {
+  font-size: 0.75rem;
+  color: var(--text2);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.req-value {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.req-note { font-size: 0.78rem; color: var(--text3); }
+
+/* ═══════════════════════════════════════════════════════
+   FAQ
+═══════════════════════════════════════════════════════ */
+.faq-section { background: var(--bg2); }
+
+.faq-list {
+  max-width: 760px;
+  margin: 3rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  gap: 1rem;
+  transition: background 0.2s;
+}
+.faq-q:hover { background: var(--surface2); }
+.faq-arrow {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--surface2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text2);
+  font-size: 0.8rem;
+  transition: transform 0.3s, background 0.2s;
+}
+.faq-item.open .faq-arrow { transform: rotate(180deg); background: var(--green-dim); color: var(--green); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(.22,1,.36,1);
+}
+.faq-a-inner {
+  padding: 0 1.5rem 1.25rem;
+  font-size: 0.875rem;
+  color: var(--text2);
+  line-height: 1.7;
+}
+.faq-item.open .faq-a { max-height: 300px; }
+
+/* ═══════════════════════════════════════════════════════
+   DOWNLOAD CTA
+═══════════════════════════════════════════════════════ */
+.cta-section {
+  background: var(--bg);
+  text-align: center;
+  padding: 0;
+}
+.cta-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 100px 2rem;
+}
+.cta-glow {
+  position: relative;
+  display: inline-block;
+}
+.cta-glow::before {
+  content:'';
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:600px; height:300px;
+  background: radial-gradient(ellipse, rgba(0,200,81,0.12) 0%, transparent 70%);
+  pointer-events:none;
+}
+.cta-cross-large {
+  width: 72px; height: 72px;
+  background: linear-gradient(135deg, var(--green), var(--green2));
+  border-radius: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 2rem;
+  box-shadow: 0 0 40px rgba(0,200,81,0.4), 0 0 80px rgba(0,200,81,0.15);
+  animation: pulse-logo 3s ease-in-out infinite;
+  position:relative;
+}
+.cta-cross-large::before,
+.cta-cross-large::after {
+  content:'';
+  position:absolute;
+  background:#fff;
+  border-radius:3px;
+}
+.cta-cross-large::before { width:32px; height:10px; }
+.cta-cross-large::after  { width:10px; height:32px; }
+
+.cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.cta-sub {
+  font-size: 1.05rem;
+  color: var(--text2);
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.btn-download-large {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1.1rem 2.5rem;
+  background: var(--green);
+  color: #000;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.1rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 32px rgba(0,200,81,0.4);
+}
+.btn-download-large:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 48px rgba(0,200,81,0.55);
+}
+.cta-note {
+  font-size: 0.8rem;
+  color: var(--text3);
+}
+.cta-note span { color: var(--text2); }
+
+/* ═══════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════ */
+footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem 2rem;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 3rem;
+}
+.footer-brand .nav-logo { margin-bottom: 1rem; }
+.footer-brand p {
+  font-size: 0.875rem;
+  color: var(--text2);
+  line-height: 1.7;
+  max-width: 280px;
+}
+.footer-col h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--text);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-col a {
+  font-size: 0.875rem;
+  color: var(--text2);
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--green); }
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text3);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.footer-pk {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text2);
+}
+
+/* ═══════════════════════════════════════════════════════
+   FLOATING DOWNLOAD PILL (mobile)
+═══════════════════════════════════════════════════════ */
+.float-pill {
+  display: none;
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  background: var(--green);
+  color: #000;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 0.8rem 2rem;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0,200,81,0.5);
+  align-items: center;
+  gap: 8px;
+  animation: float-in 0.5s cubic-bezier(.22,1,.36,1) both;
+  white-space: nowrap;
+}
+@keyframes float-in { from{opacity:0;transform:translateX(-50%) translateY(20px)} }
+
+/* ═══════════════════════════════════════════════════════
+   SCROLLTOP BUTTON
+═══════════════════════════════════════════════════════ */
+.scroll-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 200;
+  width: 44px; height: 44px;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text2);
+  font-size: 1.1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.scroll-top.show { opacity: 1; pointer-events: all; }
+.scroll-top:hover { transform: translateY(-3px); border-color: var(--green); color: var(--green); }
+
+/* ═══════════════════════════════════════════════════════
+   DIVIDER
+═══════════════════════════════════════════════════════ */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  position: relative;
+  z-index: 1;
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .btn-nav   { display: none; }
+  .hamburger { display: flex; }
+  .float-pill { display: flex; }
+  .scroll-top { bottom: 5.5rem; }
+
+  .bento-grid { grid-template-columns: 1fr 1fr; }
+  .bento-card.span-2 { grid-column: span 2; }
+
+  .preview-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .hero-stats   { gap: 1.25rem; }
+  .stat-divider { display:none; }
+}
+
+@media (max-width: 600px) {
+  .bento-grid { grid-template-columns: 1fr; }
+  .bento-card.span-2 { grid-column: span 1; }
+  .timeline::before { left: 20px; }
+  .timeline-marker { width:42px; height:42px; font-size:0.9rem; }
+  .timeline { gap: 1rem; }
+  .timeline-item { gap: 1rem; }
+  .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .hero-actions { flex-direction: column; }
+  .btn-download, .btn-ghost { width: 100%; justify-content: center; }
+  .cta-buttons { flex-direction: column; }
+  .btn-download-large { width: 100%; justify-content: center; }
+  .req-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
 </head>
-<body class="bg-titanium-50 text-titanium-900 font-sans antialiased selection:bg-titanium-600 selection:text-white">
+<body>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <i class="ph-fill ph-first-aid text-3xl text-emerald-600"></i>
-                    <span class="font-black text-2xl tracking-tight text-titanium-800">Pharmacy<span class="text-titanium-600">ERP</span></span>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#features" class="font-semibold text-gray-600 hover:text-titanium-800 transition">Features</a>
-                    <a href="#compliance" class="font-semibold text-gray-600 hover:text-titanium-800 transition">Pakistan Ready</a>
-                    <a href="#pricing" class="font-semibold text-gray-600 hover:text-titanium-800 transition">Pricing</a>
-                    <button onclick="openLicenseModal('quote')" class="font-bold text-titanium-800 hover:text-titanium-600 transition">Contact Sales</button>
-                    <button onclick="openLicenseModal('trial')" class="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2.5 rounded-full font-bold shadow-lg shadow-emerald-600/30 transition transform hover:-translate-y-0.5">
-                        Download Now
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+<!-- Background grid -->
+<div class="grid-bg"></div>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div class="text-center max-w-4xl mx-auto fade-in-up">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-titanium-100 text-titanium-800 font-bold text-sm mb-6 border border-titanium-600/20">
-                    <span class="relative flex h-3 w-3">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-600"></span>
-                    </span>
-                    Titanium Edition: Now Available for Pakistani Pharmacies
-                </div>
-                <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-8 leading-tight">
-                    The Ultimate <span class="text-transparent bg-clip-text bg-gradient-to-r from-titanium-800 to-titanium-600">Enterprise</span><br>Pharmacy ERP.
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-600 mb-10 leading-relaxed max-w-3xl mx-auto">
-                    Built with zero compromises. High-speed keyboard POS, seamless Udhaar Khata management, multi-tier UOM math, and offline-first reliability. 
-                </p>
+<!-- ═══════════════════════════════════════
+     NAV
+═══════════════════════════════════════ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="logo-cross"></div>
+      PharmacyERP
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#setup">Setup Guide</a></li>
+      <li><a href="#preview">Preview</a></li>
+      <li><a href="#requirements">Requirements</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="https://www.dropbox.com/scl/fo/imuu76fy8cus1nzgdm2ia/AE2svMdrlGIaF3ZJo7rTg8I?rlkey=axnvpjx7b9auen01uzumwpnz6&st=id93wujl&dl=1" class="btn-nav">⬇ Download Free</a>
+    </div>
+    <div class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
 
-                <!-- Premium Credentials Widget instead of ugly raw text -->
-                <div class="inline-block bg-white border border-gray-200 p-1.5 rounded-2xl shadow-sm mb-10 text-left">
-                    <div class="bg-titanium-50 px-6 py-4 rounded-xl border border-gray-100 flex flex-col sm:flex-row items-center gap-6">
-                        <div class="flex items-center gap-2 text-titanium-800 font-bold uppercase tracking-wider text-sm">
-                            <i class="ph-fill ph-key text-xl text-amber-500"></i> Setup Credentials
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="flex flex-col">
-                                <span class="text-xs text-gray-500 font-semibold uppercase">Username</span>
-                                <span class="font-mono font-bold text-lg text-titanium-900 select-all">admin</span>
-                            </div>
-                            <div class="w-px bg-gray-300"></div>
-                            <div class="flex flex-col">
-                                <span class="text-xs text-gray-500 font-semibold uppercase">Password</span>
-                                <span class="font-mono font-bold text-lg text-titanium-900 select-all">admin</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#features"    onclick="closeMobile()">Features</a>
+  <a href="#setup"       onclick="closeMobile()">Setup Guide</a>
+  <a href="#preview"     onclick="closeMobile()">Preview</a>
+  <a href="#requirements" onclick="closeMobile()">Requirements</a>
+  <a href="#faq"         onclick="closeMobile()">FAQ</a>
+  <a href="https://www.dropbox.com/scl/fo/imuu76fy8cus1nzgdm2ia/AE2svMdrlGIaF3ZJo7rTg8I?rlkey=axnvpjx7b9auen01uzumwpnz6&st=id93wujl&dl=1" style="color:var(--green);font-weight:700">⬇ Download Free</a>
+</div>
 
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <button onclick="openLicenseModal('quote')" class="w-full sm:w-auto bg-titanium-800 hover:bg-titanium-600 text-white px-8 py-4 rounded-xl font-black text-lg shadow-2xl shadow-titanium-800/40 transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                        <i class="ph-bold ph-whatsapp-logo"></i> Talk To Buy
-                    </button>
-                    <button onclick="openLicenseModal('trial')" class="w-full sm:w-auto bg-white border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-4 rounded-xl font-black text-lg transition transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                        <i class="ph-bold ph-download-simple"></i> Download Installer
-                    </button>
-                </div>
-                <p class="mt-8 text-sm text-gray-500 font-medium flex items-center justify-center gap-4 flex-wrap">
-                    <span class="flex items-center gap-1"><i class="ph-fill ph-wifi-slash text-titanium-600"></i> Offline Capable</span>
-                    <span class="flex items-center gap-1"><i class="ph-fill ph-lock-key text-titanium-600"></i> Hardware Locked</span>
-                    <span class="flex items-center gap-1"><i class="ph-fill ph-rocket-launch text-titanium-600"></i> No Monthly Fees</span>
-                </p>
-            </div>
-        </div>
-    </section>
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
 
-    <!-- Core Features Grid -->
-    <section id="features" class="py-20 bg-white border-t border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-in-up delay-100">
-                <h2 class="text-4xl font-black text-titanium-900">Engineered for Flawless Operations</h2>
-                <p class="mt-4 text-lg text-gray-600">We removed the bugs, stopped the crashes, and perfected the math.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-titanium-50 rounded-3xl p-8 border border-gray-200 hover:shadow-xl transition fade-in-up delay-100">
-                    <div class="w-14 h-14 bg-titanium-800 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-titanium-800/30">
-                        <i class="ph-fill ph-keyboard text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Lightning Fast POS</h3>
-                    <p class="text-gray-600 font-medium">100% keyboard-navigable. Cashiers can scan, type quantities, and checkout via F12 without ever touching a mouse.</p>
-                </div>
-                <div class="bg-titanium-50 rounded-3xl p-8 border border-gray-200 hover:shadow-xl transition fade-in-up delay-200">
-                    <div class="w-14 h-14 bg-emerald-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-emerald-600/30">
-                        <i class="ph-fill ph-math-operations text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Multi-Tier UOM Math</h3>
-                    <p class="text-gray-600 font-medium">Flawlessly convert Box → Strip → Tablet. The penny-perfect math engine stops stock discrepancies instantly.</p>
-                </div>
-                <div class="bg-titanium-50 rounded-3xl p-8 border border-gray-200 hover:shadow-xl transition fade-in-up delay-300">
-                    <div class="w-14 h-14 bg-amber-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-amber-500/30">
-                        <i class="ph-fill ph-barcode text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Commercial ZPL Barcoding</h3>
-                    <p class="text-gray-600 font-medium">Generate professional retail stickers with Medicine Name, Price, and Expiry directly to Zebra/TVS thermal printers.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Flexible Pricing Section -->
-    <section id="pricing" class="py-20 bg-titanium-50 border-t border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden fade-in-up delay-100">
-                <div class="grid lg:grid-cols-2">
-                    <div class="p-10 lg:p-16">
-                        <h2 class="text-3xl lg:text-4xl font-black text-titanium-900 mb-4">Tailored Pricing for Your Business.</h2>
-                        <p class="text-lg text-gray-600 mb-8 font-medium">
-                            We don't believe in forcing a one-size-fits-all price. Whether you run a single neighborhood medical store or a multi-branch enterprise network, we customize the software license to fit your exact operational scale and budget.
-                        </p>
-                        <ul class="space-y-4 mb-10">
-                            <li class="flex items-center gap-3 text-titanium-900 font-bold">
-                                <i class="ph-bold ph-check text-emerald-600 text-xl"></i> Perpetual Offline License (No Monthly Fees)
-                            </li>
-                            <li class="flex items-center gap-3 text-titanium-900 font-bold">
-                                <i class="ph-bold ph-check text-emerald-600 text-xl"></i> Free Initial Training & Data Migration
-                            </li>
-                            <li class="flex items-center gap-3 text-titanium-900 font-bold">
-                                <i class="ph-bold ph-check text-emerald-600 text-xl"></i> Priority WhatsApp Support
-                            </li>
-                        </ul>
-                        <button onclick="openLicenseModal('quote')" class="bg-titanium-800 hover:bg-titanium-600 text-white px-8 py-4 rounded-xl font-black text-lg transition shadow-lg flex items-center gap-2">
-                            <i class="ph-bold ph-chat-circle-text"></i> Request a Custom Quote
-                        </button>
-                    </div>
-                    <div class="bg-titanium-900 p-10 lg:p-16 flex flex-col justify-center relative overflow-hidden">
-                        <div class="absolute top-0 right-0 -mr-10 -mt-10 opacity-10">
-                            <i class="ph-fill ph-currency-circle-dollar text-[250px] text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-6 relative z-10">Ready to negotiate? Tell us:</h3>
-                        <div class="space-y-4 relative z-10">
-                            <div class="bg-titanium-800/50 border border-titanium-700 p-4 rounded-xl text-titanium-100 flex items-center gap-4">
-                                <div class="w-10 h-10 bg-titanium-700 rounded-full flex items-center justify-center flex-shrink-0"><i class="ph-fill ph-desktop text-xl"></i></div>
-                                <div class="font-medium">How many computer terminals?</div>
-                            </div>
-                            <div class="bg-titanium-800/50 border border-titanium-700 p-4 rounded-xl text-titanium-100 flex items-center gap-4">
-                                <div class="w-10 h-10 bg-titanium-700 rounded-full flex items-center justify-center flex-shrink-0"><i class="ph-fill ph-storefront text-xl"></i></div>
-                                <div class="font-medium">How many physical branches?</div>
-                            </div>
-                            <div class="bg-titanium-800/50 border border-titanium-700 p-4 rounded-xl text-titanium-100 flex items-center gap-4">
-                                <div class="w-10 h-10 bg-titanium-700 rounded-full flex items-center justify-center flex-shrink-0"><i class="ph-fill ph-database text-xl"></i></div>
-                                <div class="font-medium">Do you need existing data imported?</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pakistan Localization -->
-    <section id="compliance" class="py-20 bg-titanium-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="fade-in-up delay-200">
-                    <span class="text-emerald-500 font-black tracking-wider uppercase text-sm mb-2 block">Built for Pakistan</span>
-                    <h2 class="text-4xl lg:text-5xl font-black mb-6">Complete Local Compliance.</h2>
-                    <ul class="space-y-6 text-lg text-gray-300 font-medium">
-                        <li class="flex items-start gap-4">
-                            <i class="ph-fill ph-check-circle text-emerald-500 text-2xl mt-1"></i>
-                            <div><strong class="text-white">Split Khata System:</strong> Full ledger integration for walk-in cash and Udhaar (credit) customers.</div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <i class="ph-fill ph-check-circle text-emerald-500 text-2xl mt-1"></i>
-                            <div><strong class="text-white">CNIC & NTN Validation:</strong> Real-time keystroke formatters for customer and supplier tax identities.</div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <i class="ph-fill ph-check-circle text-emerald-500 text-2xl mt-1"></i>
-                            <div><strong class="text-white">Wapsi & Damage Auditing:</strong> Manager-PIN protected flows for Blind Returns and Expiry write-offs.</div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="bg-titanium-800 p-8 rounded-3xl border border-titanium-600 shadow-2xl relative overflow-hidden fade-in-up delay-200">
-                    <!-- Abstract Dashboard Mockup -->
-                    <div class="flex items-center gap-2 mb-4 border-b border-titanium-600 pb-4">
-                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                        <span class="text-titanium-100 font-bold ml-2 text-sm">Enterprise POS Terminal</span>
-                    </div>
-                    <div class="space-y-3">
-                        <div class="h-10 bg-titanium-900 rounded-lg border border-titanium-600 flex items-center px-4"><span class="text-gray-400 font-mono text-sm">Search Medicine (F3)...</span></div>
-                        <div class="grid grid-cols-4 gap-2">
-                            <div class="col-span-3 h-32 bg-titanium-900 rounded-lg border border-titanium-600 p-3">
-                                <div class="h-4 bg-titanium-700 rounded w-1/3 mb-2"></div>
-                                <div class="h-4 bg-titanium-700 rounded w-full mb-2"></div>
-                                <div class="h-4 bg-titanium-700 rounded w-2/3"></div>
-                            </div>
-                            <div class="col-span-1 bg-titanium-900 rounded-lg border border-emerald-600/50 p-3 flex flex-col justify-end">
-                                <span class="text-emerald-500 font-black text-xl">Rs. 10,500</span>
-                                <div class="h-8 bg-emerald-600 rounded mt-2 w-full"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 py-12">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="flex justify-center items-center gap-2 mb-4">
-                <i class="ph-fill ph-first-aid text-2xl text-emerald-600"></i>
-                <span class="font-black text-xl text-titanium-800">Pharmacy<span class="text-titanium-600">ERP</span></span>
-            </div>
-            <p class="text-gray-500 font-semibold mb-6">Designed and Engineered for Pakistani Pharmacies.</p>
-            <div class="flex justify-center gap-4">
-                <a href="https://wa.me/923235707591" target="_blank" class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center hover:bg-green-200 transition shadow-sm">
-                    <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
-                </a>
-                <a href="mailto:ahmedusmankhan@gmail.com" class="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center hover:bg-red-200 transition shadow-sm">
-                    <i class="ph-fill ph-envelope-simple text-2xl"></i>
-                </a>
-            </div>
-            <p class="text-gray-400 text-sm mt-8">&copy; 2026 PharmacyERP Titanium. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- ========================================== -->
-    <!-- TITANIUM LICENSE / DOWNLOAD MODAL          -->
-    <!-- ========================================== -->
-    <div id="licenseModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
-        <!-- Backdrop -->
-        <div class="absolute inset-0 bg-titanium-900/60 modal-backdrop transition-opacity" onclick="closeLicenseModal()"></div>
-        
-        <!-- Modal Content -->
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-xl relative z-10 overflow-hidden transform transition-all">
-            <!-- Header -->
-            <div class="bg-titanium-800 p-6 text-center border-b-4 border-emerald-600 relative">
-                <button onclick="closeLicenseModal()" class="absolute top-4 right-4 text-white hover:text-gray-300">
-                    <i class="ph-bold ph-x text-2xl"></i>
-                </button>
-                <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner">
-                    <i id="modalIcon" class="ph-fill ph-download-simple text-3xl text-titanium-800"></i>
-                </div>
-                <h3 id="modalTitle" class="text-2xl font-black text-white">Get Your Software</h3>
-                <p id="modalSub" class="text-titanium-100 font-medium mt-1">Follow these steps to activate your system.</p>
-            </div>
-
-            <!-- Body Steps -->
-            <div class="p-6 sm:p-8">
-                <div class="space-y-6">
-                    <!-- Step 1 -->
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center font-black text-lg border-2 border-emerald-200 shadow-sm">1</div>
-                        <div>
-                            <h4 class="font-bold text-lg text-titanium-900">Download the Installer</h4>
-                            <p class="text-gray-600 mb-2 font-medium text-sm sm:text-base">Click below to securely download the software.</p>
-                            <!-- Titanium Fix: Added the Exact F2H URL Provided -->
-                            <a href="https://f2h.io/ad15iiycyps5" target="_blank" onclick="markDownloaded()" class="inline-flex items-center gap-2 bg-titanium-100 hover:bg-titanium-200 text-titanium-800 px-5 py-2.5 rounded-xl font-bold transition border border-gray-200 text-sm sm:text-base shadow-sm">
-                                <i class="ph-bold ph-cloud-arrow-down"></i> Start Download via F2H.io
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-titanium-100 text-titanium-600 rounded-full flex items-center justify-center font-black text-lg border-2 border-titanium-200 shadow-sm">2</div>
-                        <div>
-                            <h4 class="font-bold text-lg text-titanium-900">Copy Machine ID</h4>
-                            <p class="text-gray-600 font-medium text-sm sm:text-base">Install the software. On the login screen, copy your unique Hardware Machine ID.</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="flex gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-titanium-100 text-titanium-600 rounded-full flex items-center justify-center font-black text-lg border-2 border-titanium-200 shadow-sm">3</div>
-                        <div class="w-full">
-                            <h4 id="step3Title" class="font-bold text-lg text-titanium-900">Contact Usman for Key</h4>
-                            <p class="text-gray-600 font-medium mb-3 text-sm sm:text-base">Send your Machine ID to discuss pricing and receive your activation key.</p>
-                            
-                            <div class="grid grid-cols-2 gap-3">
-                                <!-- Pre-filled WhatsApp Link -->
-                                <a id="btnWa" href="#" target="_blank" class="flex flex-col items-center justify-center gap-2 bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#128C7E] p-3 rounded-xl font-bold transition border border-[#25D366]/30 text-sm sm:text-base shadow-sm">
-                                    <i class="ph-fill ph-whatsapp-logo text-3xl"></i>
-                                    WhatsApp
-                                </a>
-                                <!-- Pre-filled Email Link -->
-                                <a id="btnMail" href="#" class="flex flex-col items-center justify-center gap-2 bg-red-50 hover:bg-red-100 text-red-600 p-3 rounded-xl font-bold transition border border-red-200 text-sm sm:text-base shadow-sm">
-                                    <i class="ph-fill ph-envelope text-3xl"></i>
-                                    Gmail
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div style="position:relative;z-index:2;width:100%;max-width:860px;margin:0 auto;">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      Made for Pakistani Pharmacies — 100% Offline
     </div>
 
-    <!-- Logic -->
-    <script>
-        const phone = "923235707591";
-        const email = "ahmedusmankhan@gmail.com";
+    <h1 class="hero-headline">
+      Pakistan ka<br>
+      <span class="accent-green">Behtareen</span>
+      <span class="accent-line"> Pharmacy Software</span>
+    </h1>
 
-        function openLicenseModal(type) {
-            const modal = document.getElementById('licenseModal');
-            const title = document.getElementById('modalTitle');
-            const sub = document.getElementById('modalSub');
-            const icon = document.getElementById('modalIcon');
-            const btnWa = document.getElementById('btnWa');
-            const btnMail = document.getElementById('btnMail');
-            const step3Title = document.getElementById('step3Title');
+    <p class="hero-urdu">
+      Apni <span class="urdu-word">Dukaan</span> ko Digitize Karen —
+      POS · Inventory · Khata · Accounting · Reports
+    </p>
 
-            let subject = "";
-            let bodyText = "";
+    <p class="hero-sub">
+      A complete, enterprise-grade pharmacy ERP for Windows. No internet required.
+      Barcode scanning, thermal receipt printing, supplier ledgers, DRAP compliance,
+      and double-entry accounting — all in one app.
+    </p>
 
-            if (type === 'trial') {
-                title.innerText = "Start 1-Month Free Trial";
-                sub.innerText = "Download, install, and request your trial key.";
-                icon.className = "ph-fill ph-gift text-4xl text-titanium-800";
-                step3Title.innerText = "Request Trial Key via WhatsApp";
-                
-                subject = "Request: 1-Month Free Trial Key";
-                bodyText = "Hello Usman,\n\nI have downloaded the Pharmacy ERP. I would like to activate my 1-Month Free Trial.\n\nMy Machine ID is: [PASTE YOUR ID HERE]";
-            } else {
-                title.innerText = "Request Custom Quote";
-                sub.innerText = "Download the software and get a tailored price.";
-                icon.className = "ph-fill ph-handshake text-4xl text-titanium-800";
-                step3Title.innerText = "Discuss Pricing & Get Key";
+    <div class="hero-actions">
+      <a
+        href="https://www.dropbox.com/scl/fo/imuu76fy8cus1nzgdm2ia/AE2svMdrlGIaF3ZJo7rTg8I?rlkey=axnvpjx7b9auen01uzumwpnz6&st=id93wujl&dl=1"
+        class="btn-download"
+      >
+        <span class="dl-icon">⬇</span>
+        Download Free for Windows
+      </a>
+      <a href="#features" class="btn-ghost">
+        See All Features →
+      </a>
+    </div>
 
-                subject = "Inquiry: Custom Quote for Pharmacy ERP";
-                bodyText = "Hello Usman,\n\nI am interested in a custom quote for the Pharmacy ERP for my business.\n\nMy Machine ID is: [PASTE YOUR ID HERE]\n\nI have [NUMBER] computers and [NUMBER] branches. Let's discuss the pricing.";
-            }
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span class="counter" data-target="100">0</span><span class="counter-unit">+</span></div>
+        <div class="hero-stat-label">Features</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span class="counter" data-target="100">0</span><span class="counter-unit">%</span></div>
+        <div class="hero-stat-label">Offline</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span class="counter" data-target="0">0</span><span class="counter-unit"> Rs</span></div>
+        <div class="hero-stat-label">Cost</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num"><span class="counter" data-target="1">0</span><span class="counter-unit"> Click</span></div>
+        <div class="hero-stat-label">Setup</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            // Encode for URLs
-            const waText = encodeURIComponent(bodyText);
-            const mailSubject = encodeURIComponent(subject);
-            const mailBody = encodeURIComponent(bodyText);
+<div class="section-divider"></div>
 
-            btnWa.href = `https://wa.me/${phone}?text=${waText}`;
-            btnMail.href = `mailto:${email}?subject=${mailSubject}&body=${mailBody}`;
+<!-- ═══════════════════════════════════════
+     FEATURES
+═══════════════════════════════════════ -->
+<section class="features-section" id="features">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow"><div class="eyebrow-line"></div>Features</div>
+      <h2 class="section-title">Everything Your Pharmacy Needs</h2>
+      <p class="section-sub">From the front counter to the back office — one software handles it all.</p>
+    </div>
 
-            // Show Modal
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            
-            // Small animation trigger
-            setTimeout(() => {
-                modal.querySelector('div.bg-white').classList.add('scale-100', 'opacity-100');
-                modal.querySelector('div.bg-white').classList.remove('scale-95', 'opacity-0');
-            }, 10);
-        }
+    <div class="bento-grid">
 
-        function closeLicenseModal() {
-            const modal = document.getElementById('licenseModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
+      <!-- POS — large card -->
+      <div class="bento-card bento-card span-2 feature-pos reveal delay-1">
+        <div class="feature-icon icon-green">🏪</div>
+        <div class="feature-name">Titanium POS Terminal</div>
+        <div class="feature-desc">
+          Lightning-fast barcode scanning, multi-UOM selling (pack/strip/tablet), instant medicine search,
+          cash/card/UPI/Khata payments, change calculation with paisa rounding, Rx prescription verification,
+          receipt printing, and cart hold/recover — all on one screen.
+        </div>
+        <div class="feature-tags">
+          <span class="feature-tag">F12 = Cash</span>
+          <span class="feature-tag">F11 = Khata</span>
+          <span class="feature-tag">F3 = Search</span>
+          <span class="feature-tag">Barcode Scanner</span>
+          <span class="feature-tag">UOM Switching</span>
+          <span class="feature-tag">FEFO Stock</span>
+        </div>
+      </div>
 
-        function markDownloaded() {
-            // Visual feedback that step 1 is done
-            const step1btn = document.querySelector('a[href^="https://f2h.io"]');
-            step1btn.innerHTML = '<i class="ph-bold ph-check-circle text-emerald-600"></i> Download Started';
-            step1btn.classList.add('border-emerald-500', 'bg-emerald-50');
-        }
-    </script>
+      <!-- Accounting -->
+      <div class="bento-card reveal delay-2">
+        <div class="feature-icon icon-blue">📒</div>
+        <div class="feature-name">Double-Entry Accounting</div>
+        <div class="feature-desc">
+          Full general ledger, Khata/Udhaar customer credit, supplier payments, WHT deduction, advance tax,
+          cash flow documents, and automatic journal entries for every transaction.
+        </div>
+        <div class="feature-tags">
+          <span class="feature-tag">Khata</span>
+          <span class="feature-tag">WHT</span>
+          <span class="feature-tag">Ledger</span>
+        </div>
+      </div>
+
+      <!-- Purchase -->
+      <div class="bento-card reveal delay-1">
+        <div class="feature-icon icon-gold">📦</div>
+        <div class="feature-name">Purchase Entry Engine</div>
+        <div class="feature-desc">
+          Receive supplier invoices with trade discount, cash discount, freight, advance tax.
+          Stock auto-received per batch with FEFO tracking. Landed cost calculated to the paisa.
+        </div>
+        <div class="feature-tags">
+          <span class="feature-tag">Trade Disc</span>
+          <span class="feature-tag">Cash Disc</span>
+          <span class="feature-tag">Freight</span>
+        </div>
+      </div>
+
+      <!-- Inventory -->
+      <div class="bento-card reveal delay-2">
+        <div class="feature-icon icon-teal">🗂️</div>
+        <div class="feature-name">Batch & Inventory Management</div>
+        <div class="feature-desc">
+          FEFO batch deduction, expiry tracking, quarantine control, multi-UOM (Pack/Strip/Tablet),
+          live stock levels, barcode per batch, and stock costing reports.
+        </div>
+        <div class="feature-tags">
+          <span class="feature-tag">FEFO</span>
+          <span class="feature-tag">Expiry Alerts</span>
+          <span class="feature-tag">Batches</span>
+        </div>
+      </div>
+
+      <!-- Reports -->
+      <div class="bento-card reveal delay-3">
+        <div class="feature-icon icon-purple">📊</div>
+        <div class="feature-name">Reports & Analytics</div>
+        <div class="feature-desc">
+          Daily cash variance report, stock costing valuation, profit & loss, shift summary,
+          purchase integrity checker, and advanced analytics — all exportable.
+        </div>
+        <div class="feature-tags">
+          <span class="feature-tag">Cash Variance</span>
+          <span class="feature-tag">P&L</span>
+          <span class="feature-tag">Stock Report</span>
+        </div>
+      </div>
+
+      <!-- Security -->
+      <div class="bento-card reveal delay-4">
+        <div class="feature-icon icon-red">🔒</div>
+        <div class="feature-name">Security & Audit Trail</div>
+        <div class="feature-desc">
+          Manager-PIN required for voids, role-based access (Admin/Manager/Cashier), immutable audit logs,
+          shift management with opening/closing cash, and discrepancy tracking.
+        </div>
+        <div class="feature-tags">
+          <span class="feature-tag">Manager PIN</span>
+          <span class="feature-tag">Void Log</span>
+          <span class="feature-tag">Shift Mgmt</span>
+        </div>
+      </div>
+
+      <!-- Printing -->
+      <div class="bento-card span-2 reveal delay-1">
+        <div class="feature-icon icon-blue">🖨️</div>
+        <div class="feature-name">Receipt & Barcode Printing</div>
+        <div class="feature-desc">
+          Thermal receipt printer support (default: POS-58, 58mm paper). Barcode label printing (ZDesigner/Zebra).
+          Auto-print on sale. Cash drawer open command on cash payments.
+          Set your pharmacy name, address, and NTN on every receipt.
+        </div>
+        <div class="feature-tags">
+          <span class="feature-tag">POS-58 Thermal</span>
+          <span class="feature-tag">ZDesigner</span>
+          <span class="feature-tag">Cash Drawer</span>
+          <span class="feature-tag">Custom Header</span>
+          <span class="feature-tag">Auto-Print</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════
+     SETUP GUIDE
+═══════════════════════════════════════ -->
+<section class="setup-section" id="setup">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center">
+      <div class="section-eyebrow" style="justify-content:center"><div class="eyebrow-line"></div>Setup Guide<div class="eyebrow-line"></div></div>
+      <h2 class="section-title">Start in 5 Minutes</h2>
+      <p class="section-sub" style="margin:0 auto">No installation wizard needed. Just download, run, and you are ready.</p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item reveal delay-1">
+        <div class="timeline-marker">1</div>
+        <div class="timeline-content">
+          <div class="timeline-step-label">Step 1 — Download</div>
+          <div class="timeline-title">Download the Software</div>
+          <div class="timeline-desc">
+            Click the green Download button above. Your browser will download a ZIP file from Dropbox.
+            Save it anywhere — your Desktop, Downloads folder, or a USB drive.
+          </div>
+          <div class="timeline-code">PharmacyERP.zip → Save to Desktop</div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal delay-2">
+        <div class="timeline-marker">2</div>
+        <div class="timeline-content">
+          <div class="timeline-step-label">Step 2 — Extract &amp; Run</div>
+          <div class="timeline-title">Extract and Launch</div>
+          <div class="timeline-desc">
+            Right-click the ZIP file → "Extract All" → open the extracted folder →
+            double-click <strong style="color:var(--green)">PharmacyERP.exe</strong> to launch.
+            No installation required. If Windows SmartScreen appears, click "More Info" → "Run Anyway".
+          </div>
+          <div class="timeline-code">PharmacyERP.exe → Double Click to Run</div>
+          <div class="timeline-note">
+            💡 .NET 8 Runtime required. Download free from microsoft.com/dotnet if prompted.
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal delay-3">
+        <div class="timeline-marker">3</div>
+        <div class="timeline-content">
+          <div class="timeline-step-label">Step 3 — First Time Setup</div>
+          <div class="timeline-title">Fill Your Pharmacy Details</div>
+          <div class="timeline-desc">
+            On first launch, the <strong style="color:var(--text)">Setup Form</strong> will open automatically.
+            Enter your pharmacy name, address, city, phone number, and NTN/STRN (for receipts).
+            Also set the <strong style="color:var(--text)">Print Header</strong> — this text appears on top of every customer receipt.
+          </div>
+          <div class="timeline-note">
+            📋 Example print header: "AL-SHIFA PHARMACY · Model Town, Lahore · 0300-1234567"
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal delay-4">
+        <div class="timeline-marker">4</div>
+        <div class="timeline-content">
+          <div class="timeline-step-label">Step 4 — Secure Your Account</div>
+          <div class="timeline-title">Create Your Admin Password</div>
+          <div class="timeline-desc">
+            Set a strong password for the Admin account.
+            You can also create Manager and Cashier accounts with different permission levels.
+            Managers can approve voids; Cashiers can only operate the POS.
+            You can change your password anytime from Settings → Change Password.
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal delay-5">
+        <div class="timeline-marker">5</div>
+        <div class="timeline-content">
+          <div class="timeline-step-label">Step 5 — Printer Setup</div>
+          <div class="timeline-title">Configure Your Printers</div>
+          <div class="timeline-desc">
+            Go to Settings → Local Config. Set your <strong style="color:var(--text)">Receipt Printer Name</strong>
+            (default is <code style="color:var(--green);font-family:var(--font-mono);font-size:0.85em">POS-58</code> for 58mm thermal printers)
+            and your <strong style="color:var(--text)">Barcode Printer Name</strong>
+            (default is <code style="color:var(--green);font-family:var(--font-mono);font-size:0.85em">ZDesigner</code> for Zebra printers).
+            Use the exact Windows printer name from your Printers &amp; Scanners settings.
+          </div>
+          <div class="timeline-note">
+            🖨️ Common printer names: "POS-58", "EPSON TM-T20", "Xprinter XP-58", "ZDesigner GK420d"
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal delay-6">
+        <div class="timeline-marker">✓</div>
+        <div class="timeline-content" style="border-color:rgba(0,200,81,0.3);background:linear-gradient(135deg,var(--surface),#0A1810)">
+          <div class="timeline-step-label">Ready!</div>
+          <div class="timeline-title" style="color:var(--green)">You're All Set — Start Selling</div>
+          <div class="timeline-desc">
+            Open your first shift from the Shift menu, add your medicines in the Inventory section,
+            and start using the POS Terminal. Press <strong style="color:var(--text)">F12</strong> to process a cash sale,
+            <strong style="color:var(--text)">F11</strong> for Khata, <strong style="color:var(--text)">F3</strong> to search medicines.
+            Everything is keyboard-friendly for fast pharmacy counter work.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════
+     PREVIEW
+═══════════════════════════════════════ -->
+<section class="preview-section" id="preview">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center">
+      <div class="section-eyebrow" style="justify-content:center"><div class="eyebrow-line"></div>Preview<div class="eyebrow-line"></div></div>
+      <h2 class="section-title">See It in Action</h2>
+      <p class="section-sub" style="margin:0 auto">Professional design built for fast pharmacy workflows.</p>
+    </div>
+
+    <div class="preview-grid">
+
+      <!-- POS preview -->
+      <div class="preview-card reveal delay-1">
+        <div class="preview-screen">
+          <div class="preview-screen-inner">
+            <div class="sim-pos-bar">
+              <div class="sim-bar-dot" style="background:#ff5f57"></div>
+              <div class="sim-bar-dot" style="background:#febc2e"></div>
+              <div class="sim-bar-dot" style="background:#28c840"></div>
+              <span style="font-size:9px;color:rgba(255,255,255,0.7);margin-left:6px;font-family:var(--font-mono)">TITANIUM POS — Enterprise Grade</span>
+            </div>
+            <div class="sim-pos-body">
+              <div class="sim-row sim-row-1"></div>
+              <div class="sim-row sim-row-2"></div>
+              <div class="sim-row sim-row-3"></div>
+              <div class="sim-row sim-row-4"></div>
+              <div class="sim-total"></div>
+            </div>
+          </div>
+        </div>
+        <div class="preview-info">
+          <div class="preview-info-title">POS Terminal</div>
+          <div class="preview-info-desc">Scan barcodes, search medicines by name/generic/ID, switch units (Pack→Strip→Tablet), and checkout in seconds.</div>
+        </div>
+      </div>
+
+      <!-- Accounting preview -->
+      <div class="preview-card reveal delay-2">
+        <div class="preview-screen">
+          <div class="preview-screen-inner">
+            <div class="sim-ledger-header">
+              <div style="width:60px;height:8px;background:rgba(26,143,255,0.4);border-radius:3px"></div>
+              <div style="width:40px;height:8px;background:rgba(26,143,255,0.2);border-radius:3px;margin-left:8px"></div>
+            </div>
+            <div class="sim-ledger-body">
+              <div class="sim-lrow" style="margin-bottom:7px">
+                <div class="sim-lrow-label" style="width:55%"></div>
+                <div class="sim-lrow-val" style="width:28%"></div>
+              </div>
+              <div class="sim-lrow" style="margin-bottom:7px">
+                <div class="sim-lrow-label" style="width:40%"></div>
+                <div class="sim-lrow-neg" style="width:25%"></div>
+              </div>
+              <div class="sim-lrow" style="margin-bottom:7px">
+                <div class="sim-lrow-label" style="width:50%"></div>
+                <div class="sim-lrow-val" style="width:30%"></div>
+              </div>
+              <div class="sim-lrow">
+                <div class="sim-lrow-label" style="width:35%"></div>
+                <div class="sim-lrow-val" style="width:35%;background:rgba(0,200,81,0.25)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="preview-info">
+          <div class="preview-info-title">Accounting Ledger</div>
+          <div class="preview-info-desc">Full double-entry ledger with customer Khata, supplier accounts, WHT deduction, and cash flow tracking.</div>
+        </div>
+      </div>
+
+      <!-- Purchase preview -->
+      <div class="preview-card reveal delay-3">
+        <div class="preview-screen" style="background:var(--surface2)">
+          <div class="preview-screen-inner" style="height:80%">
+            <div style="height:26px;background:linear-gradient(90deg,rgba(245,166,35,0.2),rgba(245,166,35,0.05));display:flex;align-items:center;padding:0 10px">
+              <span style="font-size:8px;color:var(--gold);font-family:var(--font-mono);font-weight:600">PURCHASE ENTRY ENGINE</span>
+            </div>
+            <div style="padding:8px 10px;display:flex;flex-direction:column;gap:5px">
+              <div style="display:flex;gap:6px">
+                <div style="height:11px;border-radius:3px;background:rgba(255,255,255,0.07);flex:2"></div>
+                <div style="height:11px;border-radius:3px;background:rgba(245,166,35,0.15);flex:1"></div>
+              </div>
+              <div style="display:flex;gap:6px">
+                <div style="height:11px;border-radius:3px;background:rgba(255,255,255,0.05);flex:3"></div>
+                <div style="height:11px;border-radius:3px;background:rgba(255,255,255,0.05);flex:1"></div>
+              </div>
+              <div style="height:28px;border-radius:5px;background:rgba(0,200,81,0.1);border:1px solid rgba(0,200,81,0.2);margin-top:4px;display:flex;align-items:center;justify-content:flex-end;padding:0 8px">
+                <span style="font-size:8px;color:var(--green);font-family:var(--font-mono)">NET PAYABLE: Rs. 14,760</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="preview-info">
+          <div class="preview-info-title">Purchase Entry</div>
+          <div class="preview-info-desc">Receive supplier invoices with full breakdown: trade discount, cash discount, freight, advance tax — all journalized automatically.</div>
+        </div>
+      </div>
+
+      <!-- Reports preview -->
+      <div class="preview-card reveal delay-4">
+        <div class="preview-screen">
+          <div class="preview-screen-inner">
+            <div style="display:flex;gap:4px;padding:8px;height:100%">
+              <!-- Bar chart simulation -->
+              <div style="flex:1;display:flex;align-items:flex-end;gap:3px;padding:4px 0">
+                <div style="flex:1;background:rgba(0,200,81,0.3);border-radius:2px 2px 0 0;height:45%;animation:bar-grow 1s ease both 0.1s"></div>
+                <div style="flex:1;background:rgba(0,200,81,0.4);border-radius:2px 2px 0 0;height:65%;animation:bar-grow 1s ease both 0.2s"></div>
+                <div style="flex:1;background:rgba(0,200,81,0.5);border-radius:2px 2px 0 0;height:80%;animation:bar-grow 1s ease both 0.3s"></div>
+                <div style="flex:1;background:rgba(0,200,81,0.6);border-radius:2px 2px 0 0;height:55%;animation:bar-grow 1s ease both 0.4s"></div>
+                <div style="flex:1;background:rgba(0,200,81,0.7);border-radius:2px 2px 0 0;height:90%;animation:bar-grow 1s ease both 0.5s"></div>
+                <div style="flex:1;background:rgba(0,200,81,0.5);border-radius:2px 2px 0 0;height:70%;animation:bar-grow 1s ease both 0.6s"></div>
+                <div style="flex:1;background:rgba(0,200,81,0.8);border-radius:2px 2px 0 0;height:85%;animation:bar-grow 1s ease both 0.7s"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;justify-content:center;gap:8px;padding:8px">
+                <div style="font-size:8px;color:var(--green);font-family:var(--font-mono)">Today</div>
+                <div style="font-size:14px;color:var(--text);font-family:var(--font-display);font-weight:800">Rs. 48,290</div>
+                <div style="font-size:8px;color:rgba(0,200,81,0.7)">↑ +12% vs yesterday</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="preview-info">
+          <div class="preview-info-title">Sales Reports</div>
+          <div class="preview-info-desc">Daily cash variance, shift summaries, stock valuation, and P&amp;L — all in one dashboard.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+@keyframes bar-grow { from{height:0} }
+</style>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════
+     REQUIREMENTS
+═══════════════════════════════════════ -->
+<section class="req-section" id="requirements">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center">
+      <div class="section-eyebrow" style="justify-content:center"><div class="eyebrow-line"></div>Requirements<div class="eyebrow-line"></div></div>
+      <h2 class="section-title">System Requirements</h2>
+      <p class="section-sub" style="margin:0 auto">Runs on most pharmacy computers — even older hardware.</p>
+    </div>
+
+    <div class="req-grid">
+      <div class="req-card reveal delay-1">
+        <div class="req-icon">💻</div>
+        <div class="req-label">Operating System</div>
+        <div class="req-value">Windows 10 / 11</div>
+        <div class="req-note">64-bit recommended</div>
+      </div>
+      <div class="req-card reveal delay-2">
+        <div class="req-icon">⚙️</div>
+        <div class="req-label">.NET Runtime</div>
+        <div class="req-value">.NET 8 Desktop</div>
+        <div class="req-note">Free from microsoft.com</div>
+      </div>
+      <div class="req-card reveal delay-3">
+        <div class="req-icon">🖥️</div>
+        <div class="req-label">Display</div>
+        <div class="req-value">1280 × 720+</div>
+        <div class="req-note">1366×768 or higher best</div>
+      </div>
+      <div class="req-card reveal delay-4">
+        <div class="req-icon">💾</div>
+        <div class="req-label">Storage</div>
+        <div class="req-value">200 MB Disk</div>
+        <div class="req-note">Data grows with usage</div>
+      </div>
+      <div class="req-card reveal delay-5">
+        <div class="req-icon">🧠</div>
+        <div class="req-label">RAM</div>
+        <div class="req-value">4 GB RAM</div>
+        <div class="req-note">2 GB minimum</div>
+      </div>
+      <div class="req-card reveal delay-6">
+        <div class="req-icon">🌐</div>
+        <div class="req-label">Internet</div>
+        <div class="req-value">Not Required</div>
+        <div class="req-note">100% offline operation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════
+     FAQ
+═══════════════════════════════════════ -->
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center">
+      <div class="section-eyebrow" style="justify-content:center"><div class="eyebrow-line"></div>FAQ<div class="eyebrow-line"></div></div>
+      <h2 class="section-title">Aksar Puchhe Jane Wale Sawal</h2>
+      <p class="section-sub" style="margin:0 auto">Frequently Asked Questions</p>
+    </div>
+
+    <div class="faq-list reveal delay-1">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is this software really free? (Kya yeh software bilkul free hai?)
+          <div class="faq-arrow">▼</div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Yes — completely free to download and use. No subscription, no monthly fee, no hidden charges.
+            Just download, run, and manage your pharmacy.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Does it need internet to work? (Internet chahiye ya nahi?)
+          <div class="faq-arrow">▼</div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            No internet required at all. PharmacyERP works 100% offline using a local SQLite database
+            stored on your computer. Your data never leaves your machine.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Which thermal printer works? (Konsa thermal printer kaam karta hai?)
+          <div class="faq-arrow">▼</div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Any 58mm or 80mm thermal printer that installs as a Windows printer works — including POS-58,
+            Xprinter XP-58, EPSON TM-T20, and similar. Just set the printer name in Settings to match
+            the exact name shown in Windows "Printers &amp; Scanners".
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I change the receipt header? (Receipt ka header change kar sakte hain?)
+          <div class="faq-arrow">▼</div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Yes. Go to Settings → Setup Form → Print Header. Enter your pharmacy name, address, phone, and
+            any custom text. It will appear on every receipt automatically.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How do I change my password? (Password kaise badlein?)
+          <div class="faq-arrow">▼</div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Log in as Admin → go to Settings → Change Password. Enter your current password,
+            then your new password twice to confirm. Managers can also change their own passwords
+            from the same menu.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is Khata / Udhaar supported? (Kya Khata support karta hai?)
+          <div class="faq-arrow">▼</div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Yes. Register your regular customers in the Accounts section. At checkout, select the customer
+            and press F11 (Khata button). You can collect partial cash now and the remainder goes to their
+            Khata balance. All balances are tracked in the ledger automatically.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Does it support DRAP / Rx medicines? (Prescription medicines ka kya hoga?)
+          <div class="faq-arrow">▼</div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Yes. Mark medicines as "Prescription Required" in the medicine catalogue. The POS will highlight
+            them in amber and require the cashier to tick "Rx Verified" and enter a prescription reference
+            number before checkout can proceed — keeping you DRAP compliant.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What happens if the PC shuts down during a sale?
+          <div class="faq-arrow">▼</div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            PharmacyERP auto-saves your cart every 10 seconds to a pending cart in the database.
+            When you reopen the software, click "Recover Cart" on the POS to restore your items
+            exactly as they were. No data is lost.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════
+     DOWNLOAD CTA
+═══════════════════════════════════════ -->
+<section class="cta-section" id="download">
+  <div class="cta-inner cta-glow reveal">
+    <div class="cta-cross-large"></div>
+    <h2 class="cta-title">
+      Apni Pharmacy ko<br>
+      <span style="color:var(--green)">Aaj Digitize Karen</span>
+    </h2>
+    <p class="cta-sub">
+      Free download. No account needed. No subscription. Just download and run.
+    </p>
+    <div class="cta-buttons">
+      <a
+        href="https://www.dropbox.com/scl/fo/imuu76fy8cus1nzgdm2ia/AE2svMdrlGIaF3ZJo7rTg8I?rlkey=axnvpjx7b9auen01uzumwpnz6&st=id93wujl&dl=1"
+        class="btn-download-large"
+      >
+        ⬇&nbsp; Download PharmacyERP Free
+      </a>
+    </div>
+    <p class="cta-note">
+      Windows 10 / 11 &nbsp;·&nbsp;
+      Requires <span>.NET 8 Desktop Runtime</span> &nbsp;·&nbsp;
+      100% Offline &nbsp;·&nbsp; Free Forever
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">
+        <div class="logo-cross"></div>
+        PharmacyERP
+      </a>
+      <p>
+        A complete pharmacy management system built for Pakistani pharmacies.
+        POS, inventory, accounting, Khata, receipts — all in one offline Windows application.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Features</h4>
+      <ul>
+        <li><a href="#features">POS Terminal</a></li>
+        <li><a href="#features">Purchase Entry</a></li>
+        <li><a href="#features">Inventory & Batches</a></li>
+        <li><a href="#features">Accounting Ledger</a></li>
+        <li><a href="#features">Reports</a></li>
+        <li><a href="#features">Receipt Printing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <ul>
+        <li><a href="#setup">Setup Guide</a></li>
+        <li><a href="#requirements">Requirements</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://www.dropbox.com/scl/fo/imuu76fy8cus1nzgdm2ia/AE2svMdrlGIaF3ZJo7rTg8I?rlkey=axnvpjx7b9auen01uzumwpnz6&st=id93wujl&dl=1">Download</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2025 PharmacyERP. Free software for Pakistani pharmacies.</div>
+    <div class="footer-pk">Made with ❤️ in 🇵🇰 Pakistan</div>
+  </div>
+</footer>
+
+<!-- Floating download pill (mobile) -->
+<a
+  href="https://www.dropbox.com/scl/fo/imuu76fy8cus1nzgdm2ia/AE2svMdrlGIaF3ZJo7rTg8I?rlkey=axnvpjx7b9auen01uzumwpnz6&st=id93wujl&dl=1"
+  class="float-pill"
+  id="floatPill"
+>
+  ⬇ Download Free
+</a>
+
+<!-- Scroll top button -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  ↑
+</button>
+
+<!-- ═══════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════ -->
+<script>
+// ── Sticky nav ────────────────────────────────
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// ── Hamburger ────────────────────────────────
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
+  mobileNav.classList.toggle('open');
+});
+function closeMobile() { mobileNav.classList.remove('open'); }
+
+// ── Scroll reveal ─────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
+  .forEach(el => observer.observe(el));
+
+// ── Counter animation ────────────────────────
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target, 10);
+  if (target === 0) { el.textContent = '0'; return; }
+  const duration = 1400;
+  const start = performance.now();
+  const update = (now) => {
+    const progress = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(ease * target);
+    if (progress < 1) requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounter(e.target);
+      counterObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+// ── FAQ accordion ────────────────────────────
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  // Toggle clicked
+  if (!wasOpen) item.classList.add('open');
+}
+
+// ── Scroll top button ────────────────────────
+const scrollTopBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+  scrollTopBtn.classList.toggle('show', window.scrollY > 400);
+});
+
+// ── Card mouse glow effect ───────────────────
+document.querySelectorAll('.bento-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
+    const y = ((e.clientY - rect.top)  / rect.height * 100).toFixed(1);
+    card.style.setProperty('--mx', x + '%');
+    card.style.setProperty('--my', y + '%');
+  });
+});
+
+// ── Typing tagline ────────────────────────────
+(function typewriter() {
+  const el = document.querySelector('.hero-urdu');
+  if (!el) return;
+  const phrases = [
+    'Apni <span class="urdu-word">Dukaan</span> ko Digitize Karen — POS · Inventory · Khata · Accounting',
+    'Apni <span class="urdu-word">Pharmacy</span> ki Taraqi ka Raaz — Fast · Secure · Offline',
+    'Pakistan ki <span class="urdu-word">Zaroorat</span> — Complete ERP aik click mein'
+  ];
+  let i = 0;
+  setInterval(() => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(8px)';
+    el.style.transition = 'opacity 0.4s, transform 0.4s';
+    setTimeout(() => {
+      i = (i + 1) % phrases.length;
+      el.innerHTML = phrases[i];
+      el.style.opacity = '';
+      el.style.transform = '';
+    }, 400);
+  }, 4000);
+})();
+
+// ── Reduced motion ────────────────────────────
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
+    .forEach(el => el.classList.add('visible'));
+}
+</script>
+
 </body>
 </html>
