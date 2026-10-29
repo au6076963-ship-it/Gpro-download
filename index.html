@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PharmacyERP — Pakistan ka Behtareen Pharmacy Software</title>
+<meta name="description" content="PharmacyERP is free pharmacy management software for Windows: POS, batch and expiry inventory, Khata, accounting and receipt printing. Works 100% offline.">
+<meta property="og:title" content="PharmacyERP — Smart Pharmacy Software for Pakistan">
+<meta property="og:description" content="POS, inventory, Khata, accounting and receipts in one offline Windows app. Free download.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>(function(){var d=document.documentElement;try{var t=localStorage.getItem('pt');if(t)d.dataset.theme=t}catch(e){}})()</script>
+<style>
+:root{--bg:#F7FAF8;--bg2:#EDF4F0;--sf:#fff;--bd:#D5E3DB;--tx:#0C1F17;--tx2:#4A645A;--g:#0B6B43;--on:#fff;--tint:rgba(11,107,67,.09);--hdr:rgba(247,250,248,.88);--pn:#0B4A31;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#08140F;--bg2:#0C1B15;--sf:#112219;--bd:#1E382B;--tx:#E4F3EA;--tx2:#93AFA1;--g:#4FD69A;--on:#04170E;--tint:rgba(79,214,154,.1);--hdr:rgba(8,20,15,.86);--pn:#0F3A28;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#08140F;--bg2:#0C1B15;--sf:#112219;--bd:#1E382B;--tx:#E4F3EA;--tx2:#93AFA1;--g:#4FD69A;--on:#04170E;--tint:rgba(79,214,154,.1);--hdr:rgba(8,20,15,.86);--pn:#0F3A28;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+body{font:400 16px/1.65 Figtree,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--tx);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--hdr);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,.n,.lg{font-family:"Bricolage Grotesque",Figtree,system-ui,sans-serif;letter-spacing:-.025em;line-height:1.1}
+.w{max-width:1120px;margin:0 auto;padding:0 20px}
+.i{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+:focus-visible{outline:3px solid var(--g);outline-offset:3px;border-radius:6px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--hdr);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--bd)}
+.nv{display:flex;align-items:center;gap:22px;height:64px}
+.lg{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.2rem;margin-right:auto}
+.mk{width:32px;height:32px;border-radius:9px;background:var(--g);position:relative}
+.mk::before,.mk::after{content:"";position:absolute;background:var(--on);border-radius:2px;left:50%;top:50%;transform:translate(-50%,-50%)}
+.mk::before{width:16px;height:5px}.mk::after{width:5px;height:16px}
+.nl{display:flex;gap:26px;font-size:.92rem;font-weight:500;color:var(--tx2)}
+.nl a:hover{color:var(--tx)}
+.ic{width:38px;height:38px;border-radius:10px;border:1px solid var(--bd);background:var(--sf);color:var(--tx);cursor:pointer;font-size:1rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:.8rem 1.4rem;border-radius:12px;font-weight:700;border:1px solid transparent;transition:transform .2s,box-shadow .2s}
+.bp{background:var(--g);color:var(--on);box-shadow:0 8px 22px rgba(11,107,67,.25)}
+.bp:hover{transform:translateY(-2px)}
+.bs{background:var(--sf);border-color:var(--bd)}.bs:hover{border-color:var(--g)}
+.sm{padding:.55rem 1rem;font-size:.9rem;box-shadow:none}
+.mn{display:none;position:relative}
+.mn summary{list-style:none;cursor:pointer;width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--bd);border-radius:10px;background:var(--sf)}
+.mn summary::-webkit-details-marker{display:none}
+.mn div{position:absolute;right:0;top:46px;min-width:200px;background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:8px;box-shadow:0 14px 30px rgba(0,0,0,.18)}
+.mn a{display:block;padding:10px 12px;border-radius:8px;font-weight:600}.mn a:hover{background:var(--bg2)}
+.hero{padding:64px 0 80px;background:radial-gradient(55% 60% at 88% 0,var(--tint),transparent 70%)}
+.hg{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+h1{font-size:clamp(2.4rem,5.4vw,4rem);font-weight:800;margin-bottom:20px}
+.lead{font-size:1.12rem;color:var(--tx2);max-width:34em;margin-bottom:30px}
+.ac{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.tr{display:flex;flex-wrap:wrap;gap:8px 22px;list-style:none;font-size:.92rem;color:var(--tx2)}
+.tr li{display:flex;align-items:center;gap:7px}.tr .i{color:var(--g)}
+.vis{display:flex;align-items:flex-start}
+.app{flex:1;min-width:0;background:var(--sf);border:1px solid var(--bd);border-radius:16px;box-shadow:0 24px 50px -20px rgba(8,50,30,.35);overflow:hidden;position:relative;z-index:1}
+.tb{display:flex;align-items:center;gap:6px;padding:10px 14px;background:var(--bg2);border-bottom:1px solid var(--bd);font-size:.78rem;font-weight:700;color:var(--tx2)}
+.tb i{width:9px;height:9px;border-radius:50%;background:var(--bd)}.tb b{margin-left:8px}
+.ab{padding:14px 16px 16px}
+.sr{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border:1px solid var(--bd);border-radius:10px;font-size:.82rem;color:var(--tx2);margin-bottom:6px}
+kbd{font:700 .72rem ui-monospace,Menlo,Consolas,monospace;padding:2px 7px;border-radius:6px;border:1px solid var(--bd);border-bottom-width:2px;background:var(--bg2);color:var(--tx)}
+.ln{display:grid;grid-template-columns:1fr auto auto;gap:10px;padding:10px 0;border-bottom:1px dashed var(--bd);font-size:.85rem;align-items:baseline}
+.ln small{display:block;color:var(--tx2);font-size:.72rem}
+.rx{display:inline-block;background:#FFF1D0;color:#8A5A00;border-radius:4px;padding:0 6px;font-size:.68rem;font-weight:800}
+.tt{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-weight:700}
+.tt strong{font:800 1.5rem "Bricolage Grotesque",sans-serif}
+.pay{display:flex;gap:8px;margin-top:12px}.pay span{flex:1;text-align:center;padding:9px;border-radius:10px;font-size:.82rem;font-weight:700;background:var(--bg2)}
+.pay span:first-child{background:var(--g);color:var(--on)}
+.rcw{width:178px;flex:none;margin:34px 0 0 -18px;filter:drop-shadow(0 14px 16px rgba(0,0,0,.22));transform:rotate(3deg);animation:pr .9s .25s cubic-bezier(.22,1,.36,1) both;position:relative;z-index:2}
+.rc{background:#fff;color:#15261E;padding:14px 13px 24px;font:11.5px/1.55 ui-monospace,Menlo,Consolas,monospace;clip-path:polygon(0 0,100% 0,100% 100%,91.67% 97%,83.33% 100%,75% 97%,66.67% 100%,58.33% 97%,50% 100%,41.67% 97%,33.33% 100%,25% 97%,16.67% 100%,8.33% 97%,0 100%)}
+.rc p{display:flex;justify-content:space-between;gap:6px}.rc .c{justify-content:center;text-align:center}
+.rc hr{border:0;border-top:1px dashed #9DB3A7;margin:6px 0}
+@keyframes pr{from{opacity:0;transform:translateY(-26px) rotate(3deg)}}
+.cap{font-size:.78rem;color:var(--tx2);margin-top:14px}
+section{padding:88px 0}.alt{background:var(--bg2)}
+h2{font-size:clamp(1.8rem,3.6vw,2.7rem);font-weight:800;margin-bottom:14px;max-width:18em}
+.sub{color:var(--tx2);max-width:36em;font-size:1.05rem;margin-bottom:44px}
+.fg{display:grid;grid-template-columns:1fr 1.1fr;gap:44px;align-items:start}
+.pos{background:var(--pn);color:#E9F7EF;border-radius:22px;padding:34px}
+.pos .i{width:34px;height:34px;color:#6FE3AC}
+.pos h3{font-size:1.7rem;font-weight:800;margin:16px 0 12px}
+.pos p{color:#B9D8C8}
+.pos ul{list-style:none;margin:20px 0 24px;display:grid;gap:10px;font-size:.95rem}
+.pos li{display:flex;gap:10px}.pos li .i{width:1.2em;height:1.2em;margin-top:3px}
+.pos .k{display:flex;gap:10px;flex-wrap:wrap;font-size:.85rem;align-items:center}
+.pos kbd{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#fff}
+.fi{display:flex;gap:16px;padding:22px 0;border-top:1px solid var(--bd)}.fi:first-child{border-top:0;padding-top:0}
+.fi .i{width:44px;height:44px;padding:11px;border-radius:12px;background:var(--tint);color:var(--g)}
+.fi h3{font-size:1.15rem;font-weight:700;margin-bottom:4px}.fi p{color:var(--tx2);font-size:.95rem}
+.hw{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--bd);border-radius:18px;background:var(--sf);overflow:hidden}
+.hw div{padding:22px 24px;border-left:1px solid var(--bd)}.hw div:first-child{border-left:0}
+.hw b{display:block;font:700 1.05rem "Bricolage Grotesque",sans-serif}.hw span{color:var(--tx2);font-size:.88rem}
+.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.s{border-top:2px solid var(--g);padding-top:18px}
+.n{font-size:2.4rem;font-weight:800;color:var(--g);display:block;margin-bottom:8px}
+.s h3{font-size:1.1rem;margin-bottom:6px}.s p{color:var(--tx2);font-size:.92rem}
+.nts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.nt{border-left:3px solid var(--g);background:var(--sf);padding:14px 18px;border-radius:0 12px 12px 0;font-size:.92rem;color:var(--tx2)}.nt b{color:var(--tx)}
+.rg{display:grid;grid-template-columns:repeat(3,1fr);gap:0 44px}
+.rq{padding:18px 0;border-top:1px solid var(--bd);display:flex;justify-content:space-between;gap:16px}
+.rq span{color:var(--tx2)}.rq b{text-align:right}
+.fq{max-width:780px;display:grid;gap:10px}
+details{background:var(--sf);border:1px solid var(--bd);border-radius:14px}
+summary{cursor:pointer;list-style:none;padding:17px 20px;font-weight:700;display:flex;justify-content:space-between;gap:14px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--g);font-size:1.4rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{padding:0 20px 18px;color:var(--tx2);font-size:.95rem}
+.cta{background:var(--pn);color:#E9F7EF;border-radius:26px;padding:64px 28px;text-align:center}
+.cta h2{margin:0 auto 14px;color:#fff}
+.cta p{color:#B9D8C8;margin:0 auto 28px;max-width:30em}
+.cta .btn{background:#fff;color:#0B4A31;font-size:1.05rem;padding:1rem 2rem;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.cta small{display:block;margin-top:20px;color:#8FB9A3;font-size:.85rem}.cta small a{text-decoration:underline}
+footer{border-top:1px solid var(--bd);padding:40px 0 32px;color:var(--tx2);font-size:.9rem}
+.ft{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.ft p{max-width:340px;margin-top:10px}
+.fk{display:flex;gap:22px;flex-wrap:wrap}.fk a:hover{color:var(--g)}
+.cp{margin-top:28px;padding-top:20px;border-top:1px solid var(--bd);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:.82rem}
+.mb{display:none;position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--hdr);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--bd)}
+@media(max-width:900px){.nl{display:none}.mn{display:block}.hg,.fg{grid-template-columns:1fr}.hw{grid-template-columns:1fr 1fr}.hw div:nth-child(3){border-left:0}.hw div:nth-child(n+3){border-top:1px solid var(--bd)}.sg,.rg{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.nv .sm{display:none}.mb{display:block}.mb .btn{width:100%}footer{padding-bottom:104px}section{padding:64px 0}.nts{grid-template-columns:1fr}.hero{padding-top:40px}}
+@media(max-width:560px){.vis{flex-direction:column;align-items:center}.rcw{margin:-12px 0 0}.sg,.rg,.hw{grid-template-columns:1fr}.hw div{border-left:0!important;border-top:1px solid var(--bd)}.hw div:first-child{border-top:0}.ac .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="dl" viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14"/></symbol>
+<symbol id="ck" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+<symbol id="cart" viewBox="0 0 24 24"><path d="M3 4h2.2l2.3 10.3a2 2 0 002 1.6h7.2a2 2 0 002-1.5L20 8H6.2"/><circle cx="10" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></symbol>
+<symbol id="bk" viewBox="0 0 24 24"><path d="M5 5a2 2 0 012-2h12v15H7a2 2 0 00-2 2V5z"/><path d="M5 20a2 2 0 002 1h12"/></symbol>
+<symbol id="tray" viewBox="0 0 24 24"><path d="M4 13h4l1 3h6l1-3h4M4 13V6a2 2 0 012-2h12a2 2 0 012 2v7M4 13v5a2 2 0 002 2h12a2 2 0 002-2v-5"/></symbol>
+<symbol id="box" viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5M12 13v8"/></symbol>
+<symbol id="bar" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-5M13 16V8M18 16v-3"/></symbol>
+<symbol id="sh" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.500-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></symbol>
+</defs></svg>
+
+<header><div class="w nv">
+  <a href="#top" class="lg"><span class="mk"></span>PharmacyERP</a>
+  <nav class="nl" aria-label="Main"><a href="#features">Features</a><a href="#setup">Setup</a><a href="#requirements">Requirements</a><a href="#faq">FAQ</a></nav>
+  <button class="ic" id="tg" aria-label="Switch light or dark theme">◐</button>
+  <a class="btn bp sm" href="https://drive.google.com/uc?export=download&amp;id=1Xfi1a6KxqKfX1_1y9lxzgmGeoLOmL6EG" target="_blank" rel="noopener"><svg class="i"><use href="#dl"/></svg>Download free</a>
+  <details class="mn"><summary aria-label="Menu">☰</summary><div><a href="#features">Features</a><a href="#setup">Setup</a><a href="#requirements">Requirements</a><a href="#faq">FAQ</a></div></details>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="w hg">
+  <div>
+    <h1>Pakistan ka Behtareen Pharmacy Software</h1>
+    <p class="lead">Apni pharmacy ko digitize karen: POS, inventory, Khata and accounting in one fast Windows app that works without internet.</p>
+    <div class="ac">
+      <a class="btn bp" href="https://drive.google.com/uc?export=download&amp;id=1Xfi1a6KxqKfX1_1y9lxzgmGeoLOmL6EG" target="_blank" rel="noopener"><svg class="i"><use href="#dl"/></svg>Download for Windows</a>
+      <a class="btn bs" href="#features">See what’s inside</a>
+    </div>
+    <ul class="tr"><li><svg class="i"><use href="#ck"/></svg>Free to download</li><li><svg class="i"><use href="#ck"/></svg>Works 100% offline</li><li><svg class="i"><use href="#ck"/></svg>No subscription</li><li><svg class="i"><use href="#ck"/></svg>Windows 10 and 11</li></ul>
+  </div>
+  <div>
+    <div class="vis" aria-hidden="true">
+      <div class="app">
+        <div class="tb"><i></i><i></i><i></i><b>PharmacyERP — POS Terminal</b></div>
+        <div class="ab">
+          <div class="sr"><span>Search medicine or scan barcode</span><kbd>F3</kbd></div>
+          <div class="ln"><span>Paracetamol 500mg<small>Strip × 2</small></span><span></span><b>Rs. 120</b></div>
+          <div class="ln"><span>Amoxicillin 500mg<small><span class="rx">Rx</span> Pack × 1</small></span><span></span><b>Rs. 420</b></div>
+          <div class="ln"><span>Ibuprofen 400mg<small>Strip × 3</small></span><span></span><b>Rs. 135</b></div>
+          <div class="tt"><span>Total</span><strong>Rs. 675</strong></div>
+          <div class="pay"><span>Cash F12</span><span>Khata F11</span></div>
+        </div>
+      </div>
+      <div class="rcw"><div class="rc">
+        <p class="c"><b>AL-SHIFA PHARMACY</b></p><p class="c">Model Town, Lahore</p><hr>
+        <p><span>Paracetamol</span><span>120</span></p><p><span>Amoxicillin</span><span>420</span></p><p><span>Ibuprofen</span><span>135</span></p><hr>
+        <p><b>TOTAL</b><b>675</b></p><p><span>Cash</span><span>700</span></p><p><span>Change</span><span>25</span></p><hr>
+        <p class="c">Thank you!</p>
+      </div></div>
+    </div>
+    <p class="cap">Sample screen and receipt, shown for illustration.</p>
+  </div>
+</div></section>
+
+<section class="alt" id="features"><div class="w">
+  <h2>Everything for the counter and the back office</h2>
+  <p class="sub">Sell faster at the counter, keep every batch and expiry in check, and see exactly where your money stands.</p>
+  <div class="fg">
+    <article class="pos">
+      <svg class="i"><use href="#cart"/></svg>
+      <h3>Titanium POS Terminal</h3>
+      <p>Built for the pharmacy counter: scan, search, sell and print without touching the mouse.</p>
+      <ul>
+        <li><svg class="i"><use href="#ck"/></svg>Barcode scanning and instant medicine search</li>
+        <li><svg class="i"><use href="#ck"/></svg>Sell by pack, strip or tablet</li>
+        <li><svg class="i"><use href="#ck"/></svg>Cash, card and Khata payments with change calculation</li>
+        <li><svg class="i"><use href="#ck"/></svg>Rx verification with a prescription reference number</li>
+        <li><svg class="i"><use href="#ck"/></svg>Hold a cart and recover it after a power cut</li>
+      </ul>
+      <div class="k"><kbd>F3</kbd>Search <kbd>F11</kbd>Khata <kbd>F12</kbd>Cash</div>
+    </article>
+    <div>
+      <div class="fi"><svg class="i"><use href="#bk"/></svg><div><h3>Accounting and Khata</h3><p>Double-entry ledger with automatic journal entries, customer Khata/Udhaar, supplier payments, WHT and advance tax.</p></div></div>
+      <div class="fi"><svg class="i"><use href="#tray"/></svg><div><h3>Purchase entry</h3><p>Record supplier invoices with trade discount, cash discount and freight. Landed cost is worked out to the paisa.</p></div></div>
+      <div class="fi"><svg class="i"><use href="#box"/></svg><div><h3>Batch and expiry control</h3><p>FEFO stock deduction, expiry tracking, quarantine, live stock levels and a barcode for every batch.</p></div></div>
+      <div class="fi"><svg class="i"><use href="#bar"/></svg><div><h3>Reports and analytics</h3><p>Daily cash variance, stock valuation, profit and loss, shift summaries and a purchase integrity check.</p></div></div>
+      <div class="fi"><svg class="i"><use href="#sh"/></svg><div><h3>Security and audit trail</h3><p>Manager PIN for voids, Admin, Manager and Cashier roles, tamper-proof audit logs and shift cash tracking.</p></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="w">
+  <h2>Works with the hardware already on your counter</h2>
+  <p class="sub">Any printer that installs as a Windows printer will do. Add your pharmacy name, address and NTN to every receipt.</p>
+  <div class="hw">
+    <div><b>Barcode scanners</b><span>Scan at the POS and in inventory</span></div>
+    <div><b>Thermal printers</b><span>58 mm and 80 mm, such as POS-58 or EPSON TM-T20</span></div>
+    <div><b>Label printers</b><span>Zebra ZDesigner barcode labels</span></div>
+    <div><b>Cash drawers</b><span>Opens automatically on cash sales</span></div>
+  </div>
+</div></section>
+
+<section class="alt" id="setup"><div class="w">
+  <h2>Up and running in about five minutes</h2>
+  <p class="sub">There is no installer. Download, extract and start.</p>
+  <div class="sg">
+    <div class="s"><span class="n">1</span><h3>Download</h3><p>Save PharmacyERP.zip anywhere on your PC, such as the Desktop.</p></div>
+    <div class="s"><span class="n">2</span><h3>Extract and launch</h3><p>Right-click the ZIP, choose Extract All, then double-click PharmacyERP.exe.</p></div>
+    <div class="s"><span class="n">3</span><h3>Set up your pharmacy</h3><p>Enter your name, address, phone and NTN/STRN, write your receipt header and create the Admin password.</p></div>
+    <div class="s"><span class="n">4</span><h3>Connect printers and sell</h3><p>In Settings → Local Config, type your exact Windows printer names. Open a shift and start selling.</p></div>
+  </div>
+  <div class="nts">
+    <div class="nt"><b>.NET 8 Desktop Runtime is required.</b> If Windows asks for it, download it free from microsoft.com/dotnet.</div>
+    <div class="nt"><b>Windows SmartScreen warning?</b> Click More info, then Run anyway.</div>
+  </div>
+</div></section>
+
+<section id="requirements"><div class="w">
+  <h2>Runs on ordinary pharmacy computers</h2>
+  <p class="sub">Older hardware is fine.</p>
+  <div class="rg">
+    <div class="rq"><span>Operating system</span><b>Windows 10 or 11 (64-bit)</b></div>
+    <div class="rq"><span>Runtime</span><b>.NET 8 Desktop</b></div>
+    <div class="rq"><span>Display</span><b>1280 × 720 or higher</b></div>
+    <div class="rq"><span>Memory</span><b>4 GB (2 GB minimum)</b></div>
+    <div class="rq"><span>Storage</span><b>200 MB, plus your data</b></div>
+    <div class="rq"><span>Internet</span><b>Not required</b></div>
+  </div>
+</div></section>
+
+<section class="alt" id="faq"><div class="w">
+  <h2>Aksar puchhe jane wale sawal</h2>
+  <p class="sub">Frequently asked questions.</p>
+  <div class="fq">
+    <details><summary>Is it really free? (Kya yeh software free hai?)</summary><p>Yes. It is free to download and use, with no subscription, no monthly fee and no hidden charges.</p></details>
+    <details><summary>Does it need internet? (Internet chahiye?)</summary><p>No. PharmacyERP works 100% offline with a local SQLite database on your computer, so your data stays on your machine.</p></details>
+    <details><summary>Which thermal printer works?</summary><p>Any 58 mm or 80 mm thermal printer that installs as a Windows printer, including POS-58, Xprinter XP-58 and EPSON TM-T20. Enter its exact name from Windows Printers &amp; Scanners in Settings → Local Config.</p></details>
+    <details><summary>Can I change the receipt header?</summary><p>Yes. Go to Settings → Setup Form → Print Header and enter your pharmacy name, address, phone and any extra text. It appears on every receipt.</p></details>
+    <details><summary>How do I change my password?</summary><p>Log in, open Settings → Change Password, enter your current password and then the new one twice. Managers can change their own passwords the same way.</p></details>
+    <details><summary>Is Khata / Udhaar supported?</summary><p>Yes. Register regular customers in Accounts. At checkout, select the customer and press F11. Take part payment in cash and the balance goes to their Khata, tracked in the ledger.</p></details>
+    <details><summary>How does it handle prescription (Rx) medicines?</summary><p>Mark a medicine as Prescription Required. The POS highlights it and asks the cashier to confirm Rx verification and enter a prescription reference before checkout, which helps you keep DRAP-ready records.</p></details>
+    <details><summary>What if the PC shuts down during a sale?</summary><p>The cart is saved automatically every 10 seconds. After restarting, click Recover Cart on the POS to get your items back exactly as they were.</p></details>
+    <details><summary>Can I install it on a phone or Mac?</summary><p>PharmacyERP is a Windows desktop app for Windows 10 and 11. Open this page on your pharmacy PC to download it.</p></details>
+  </div>
+</div></section>
+
+<section id="download"><div class="w"><div class="cta">
+  <h2>Apni pharmacy ko aaj digitize karen</h2>
+  <p>Free download. No account and no subscription. Extract the ZIP and run.</p>
+  <a class="btn" href="https://drive.google.com/uc?export=download&amp;id=1Xfi1a6KxqKfX1_1y9lxzgmGeoLOmL6EG" target="_blank" rel="noopener"><svg class="i"><use href="#dl"/></svg>Download PharmacyERP</a>
+  <small>Windows 10 and 11. Requires .NET 8 Desktop Runtime. Download not starting? <a href="https://drive.google.com/file/d/1Xfi1a6KxqKfX1_1y9lxzgmGeoLOmL6EG/view?usp=drivesdk" target="_blank" rel="noopener">Open it on Google Drive</a>.</small>
+</div></div></section>
+</main>
+
+<footer><div class="w">
+  <div class="ft">
+    <div><a href="#top" class="lg"><span class="mk"></span>PharmacyERP</a><p>Pharmacy management software built for Pakistani pharmacies: POS, inventory, accounting, Khata and receipts in one offline Windows app.</p></div>
+    <nav class="fk" aria-label="Footer"><a href="#features">Features</a><a href="#setup">Setup</a><a href="#requirements">Requirements</a><a href="#faq">FAQ</a><a href="#download">Download</a></nav>
+  </div>
+  <div class="cp"><span>© 2026 PharmacyERP. Free software for Pakistani pharmacies.</span><span>Made in Pakistan 🇵🇰</span></div>
+</div></footer>
+
+<div class="mb"><a class="btn bp" href="https://drive.google.com/uc?export=download&amp;id=1Xfi1a6KxqKfX1_1y9lxzgmGeoLOmL6EG" target="_blank" rel="noopener"><svg class="i"><use href="#dl"/></svg>Download free for Windows</a></div>
+
+<script>
+document.getElementById('tg').onclick=function(){var d=document.documentElement,k=d.dataset.theme?d.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches,n=k?'light':'dark';d.dataset.theme=n;try{localStorage.setItem('pt',n)}catch(e){}};
+document.querySelectorAll('.mn a').forEach(function(a){a.addEventListener('click',function(){a.closest('details').removeAttribute('open')})});
+</script>
+</body>
+</html>
